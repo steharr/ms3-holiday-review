@@ -16,10 +16,14 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
 
+print(os.environ.get("MONGO_URI"))
+
 
 @app.route("/")
 def landing():
-    return render_template("base.html")
+    users = list(mongo.db.users.find())
+    print(users)
+    return render_template("base.html", users=users)
 
 
 if __name__ == "__main__":
