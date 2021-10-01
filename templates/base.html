@@ -21,7 +21,14 @@
 <body>
 
     <main class="container">
+        test:
         {% block content %}
+        {% for user in users %}
+
+        <div>{{ user.username }}</div>
+
+        {% endfor %}
+
         {% endblock %}
     </main>
 
