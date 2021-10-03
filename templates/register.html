@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="row vh-100 justify-content-around align-items-center">
+
+    <div class="d-none d-lg-flex col-lg-8">
+        <div
+            class="d-flex flex-column justify-content-around align-items-center px-4 call-to-action black-outline mx-auto">
+            <h1 class="my-4">What you'll find at HolidayHub...</h1>
+            <div class="my-5">
+                <p class="reasons-to-register">
+                    Unbiased, reliable reviews from an active userbase ...
+                    <br>
+                    Detailed, data driven suggestions for places to visit ...
+                    <br>
+                    Intuitive user interface means you'll find that next holiday withing minutes!
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div
+            class="d-flex flex-column justify-content-around align-items-center px-4 text-center black-outline mx-auto">
+            <i class="my-4 fas fa-globe-europe fs-1"></i>
+            <h2>Lets get started</h2>
+            <!-- register form -->
+            <form method="POST" action="{{ url_for('register') }}">
+                <!-- username -->
+                <div class="mb-3">
+                    <label for="username" class="form-label">Choose your Username:</label>
+                    <input type="text" class="form-control" id="username" aria-describedby="usernameHelp">
+                    <div id="usernameHelp" class="form-text">This will be present to other reviewers.</div>
+                </div>
+                <!-- password -->
+                <div class="mb-3">
+                    <label for="password" class="form-label">Input your Password:</label>
+                    <input type="text" name="password" class="form-control" id="password">
+                </div>
+                <!-- submit button -->
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            <p>Already a member?<a href="#">log in here</a></p>
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock %}

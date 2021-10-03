@@ -1,3 +1,8 @@
-.target {
-    color: red;
+.black-outline{
+    border: 1px solid black;
+}
+.reasons-to-register{
+    font-size: large;
+    line-height: 3;
+    text-align: center;
 }
