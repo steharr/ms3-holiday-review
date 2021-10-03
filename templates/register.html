@@ -22,22 +22,37 @@
         <div
             class="d-flex flex-column justify-content-around align-items-center px-4 text-center black-outline mx-auto">
             <i class="my-4 fas fa-globe-europe fs-1"></i>
-            <h2>Lets get started</h2>
+            <h2>Let's get started</h2>
             <!-- register form -->
-            <form method="POST" action="{{ url_for('register') }}">
+            <form class="needs-validation" novalidate method="POST" action="{{ url_for('register') }}">
                 <!-- username -->
                 <div class="mb-3">
                     <label for="username" class="form-label">Choose your Username:</label>
-                    <input type="text" class="form-control" id="username" aria-describedby="usernameHelp">
+                    <input type="text" name="username" class="form-control" id="username"
+                        aria-describedby="usernameHelp" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$">
                     <div id="usernameHelp" class="form-text">This will be present to other reviewers.</div>
                 </div>
                 <!-- password -->
                 <div class="mb-3">
                     <label for="password" class="form-label">Input your Password:</label>
-                    <input type="text" name="password" class="form-control" id="password">
+                    <input type="password" name="password" class="form-control" id="password" minlength="5"
+                        maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$">
+                    <div id="usernameHelp" class="form-text">Choose a secure password</div>
+                </div>
+                <!-- holiday type selection -->
+                <div class="mb-3">
+                    <label for="holiday" class="form-label">What type of holidays do you like?</label>
+                    <select class="form-select" type="holiday" name="holiday" id="holiday"
+                        aria-label="Default select example">
+                        <option selected disabled></option>
+                        {% for type in holiday_type %}
+                        <option value="{{ type.holiday_type }}">{{ type.holiday_type.capitalize() }}</option>
+                        {% endfor %}
+                    </select>
+                    <div id="usernameHelp" class="form-text">This will help HolidayHub find relevant reviews</div>
                 </div>
                 <!-- submit button -->
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary mb-3">Submit</button>
             </form>
             <p>Already a member?<a href="#">log in here</a></p>
         </div>
