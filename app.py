@@ -3,6 +3,7 @@ from flask import (Flask, flash, render_template,
                    redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+from werkzeug.security import generate_password_hash
 
 
 if os.path.exists('env.py'):
@@ -23,9 +24,26 @@ def landing():
     return render_template("index.html")
 
 
-@app.route("/register")
+@app.route("/register", methods=["GET", "POST"])
 def register():
-    return render_template("register.html")
+    holiday_type = mongo.db.holiday_type.find()
+    if request.method == "POST":
+        # check if the username is already registered in the database
+        existing_user = mongo.db.users.find_one(
+            {"username": request.form.get("username").lower()})
+        # give a message if already exists
+        if existing_user:
+            return redirect(url_for("register"))
+        # insert in db if not already existing
+        new_user = {
+            "username": request.form.get("username").lower(),
+            "password": generate_password_hash(request.form.get("password").lower()),
+            "holiday_type": request.form.get("holiday").lower()
+        }
+        mongo.db.users.insert_one(new_user)
+
+    # direct to the profile page and session cookie set up for user
+    return render_template("register.html", holiday_type=holiday_type)
 
 
 if __name__ == "__main__":
