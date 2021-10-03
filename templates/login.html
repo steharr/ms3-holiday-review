@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="row vh-100 justify-content-around align-items-center">
+    <div class="col-lg-4">
+        <div
+            class="d-flex flex-column justify-content-around align-items-center px-4 text-center black-outline mx-auto">
+            <i class="my-4 fas fa-globe-europe fs-1"></i>
+            <h2>Welcome back!</h2>
+            <!-- login form -->
+            <form class="needs-validation" novalidate method="POST" action="{{ url_for('register') }}">
+                <!-- username -->
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" name="username" class="form-control" id="username" minlength="5" maxlength="15"
+                        pattern="^[a-zA-Z0-9]{5,15}$">
+                </div>
+                <!-- password -->
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" name="password" class="form-control" id="password" minlength="5"
+                        maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$">
+                </div>
+                <!-- submit button -->
+                <button type="submit" class="btn btn-primary mb-3">Submit</button>
+            </form>
+            <p>Not registered? <a href="{{ url_for('register') }}">Sign up here</a></p>
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock %}
