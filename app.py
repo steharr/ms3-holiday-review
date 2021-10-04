@@ -33,6 +33,7 @@ def register():
             {"username": request.form.get("username").lower()})
         # give a message if already exists
         if existing_user:
+            flash("Username already exists!", "danger")
             return redirect(url_for("register"))
         # insert in db if not already existing
         new_user = {
@@ -46,7 +47,7 @@ def register():
         # flash indication
 
         # redirect to the users profile
-        flash("Registered Successfully!")
+        flash('Registration Successful', category='success')
 
     # direct to the profile page and session cookie set up for user
     return render_template("register.html", holiday_type=holiday_type)
@@ -63,11 +64,11 @@ def login():
             # set the current sessions user
             session["user"] = request.form.get("username").lower()
             # flash indication
-            flash("Login Success")
+            flash('Login Successful', category='success')
             return redirect(url_for('login'))
         else:
             # flash indication
-            flash("Login Failed")
+            flash('Login Failed', category='danger')
             return redirect(url_for('login'))
 
     return render_template("login.html")
