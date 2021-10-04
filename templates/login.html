@@ -7,6 +7,20 @@
             class="d-flex flex-column justify-content-around align-items-center px-4 text-center black-outline mx-auto">
             <i class="my-4 fas fa-globe-europe fs-1"></i>
             <h2>Welcome back!</h2>
+            <!-- flash messages -->
+            <div class="flash-authentification">
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                {% for message in messages %}
+                {% if message == "Login Success" %}
+                <h4 class="flash-authentication text-success fs-6">{{ message }}</h4>
+                {% else %}
+                <h4 class="flash-authentication text-danger fs-6">{{ message }}</h4>
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+                {% endwith %}
+            </div>
             <!-- login form -->
             <form class="needs-validation" novalidate method="POST" action="{{ url_for('register') }}">
                 <!-- username -->
