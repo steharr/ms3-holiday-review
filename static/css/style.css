@@ -10,3 +10,14 @@
 .flash-authentification{
     height: 2rem;
 }
+
+.review-rating{
+    margin-left: 1rem;
+}
+
+.btn-round{
+    height: 2.5rem;
+    width: 2.5rem;
+
+    border-radius: 50%;
+}
