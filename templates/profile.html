@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<div class="row justify-content-around align-items-center px-2">
+    <div class="col-12 col-md-4 black-outline text-center my-3">
+        <!-- PROFILE STATS -->
+        <h2 class="mb-3">{{user.username}}'s Profile</h2>
+        <div class="row justify-content-around align-items-center">
+            <div class="col-10 col-md-4 col-lg-5">
+                <!-- profile image provided via dicebears avatars HTTP-API: https://avatars.dicebear.com/ -->
+                <img class="img-thumbnail" src="https://avatars.dicebear.com/api/avataaars/{{ user.username }}.svg"
+                    alt="user profile image">
+            </div>
+            <div class="col-10 col-md-6">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        Member since: #
+                    </li>
+                    <li class="list-group-item">
+                        Number of reviews: #
+                    </li>
+                    <li class="list-group-item">
+                        Traveller type: {{ user.holiday_type.title() }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- USER REVIEWS -->
+    <div class="col-12 col-md-7 black-outline p-4">
+        <h2 class="mb-3 text-center">{{user.username}}'s Reviews</h2>
+        <div class="accordion" id="accordionPanelsStayOpenExample">
+            {% for review in reviews %}
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                    <button class="d-flex black-outline accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
+                        aria-controls="panelsStayOpen-collapseOne">
+
+                        <!-- review location -->
+                        <div><strong>{{review.location.title()}}, {{review.country.title()}}</strong></div>
+                        <!-- review star rating -->
+                        <div class="review-rating text-center">
+                            {% for i in range(0, review.rating) %}
+                            <i class="fas fa-star"></i>
+                            {% endfor %}
+                        </div>
+                        <!-- customize buttons -->
+                        <div class="ms-auto">
+                            <a class="btn btn-secondary btn-round" href="#"><i class="far fa-edit"></i></a>
+                            <a class="btn btn-secondary btn-round" href="#"><i class="far fa-trash-alt"></i></a>
+                        </div>
+                    </button>
+                </h2>
+                <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show"
+                    aria-labelledby="panelsStayOpen-headingOne">
+                    <div class="accordion-body">
+                        <!-- review details -->
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                Date visited: {{review.date_visited}}
+                            </li>
+                            <li class="list-group-item">
+                                <p><q>{{ review.comment }}</q></p>
+                            </li>
+                        </ul>
+                        <!-- review buttons -->
+                        <div class="d-flex justify-content-end">
+                            <a class="btn btn-primary mb-2" href="#">View Full Review</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</div>
+
+
+
+{% endblock %}
