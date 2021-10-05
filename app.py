@@ -35,6 +35,7 @@ def register():
         if existing_user:
             flash("Username already exists!", "danger")
             return redirect(url_for("register"))
+
         # insert in db if not already existing
         new_user = {
             "username": request.form.get("username").lower(),
@@ -45,9 +46,9 @@ def register():
         # set the current session user
         session["user"] = request.form.get("username").lower()
         # flash indication
-
-        # redirect to the users profile
         flash('Registration Successful', category='success')
+        # redirect to the users profile
+        return redirect(url_for('profile'))
 
     # direct to the profile page and session cookie set up for user
     return render_template("register.html", holiday_type=holiday_type)
@@ -55,23 +56,36 @@ def register():
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
+    print("Entered Login")
     if request.method == "POST":
         # check if the username is already registered in the database
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
         # check if the hashed password matches the password on the database
         if check_password_hash(existing_user["password"], request.form.get("password")):
+            print("Hash is good")
             # set the current sessions user
             session["user"] = request.form.get("username").lower()
             # flash indication
             flash('Login Successful', category='success')
-            return redirect(url_for('login'))
+            return redirect(url_for('profile'))
         else:
+            print("Hash is bad")
             # flash indication
             flash('Login Failed', category='danger')
             return redirect(url_for('login'))
 
     return render_template("login.html")
+
+
+@app.route("/profile")
+def profile():
+    # get the session user from the db
+    user = mongo.db.users.find_one({'username': session['user']})
+    # get the session users reviews from the db
+    user_reviews = mongo.db.reviews.find({'username': session['user']})
+
+    return render_template("profile.html", user=user, reviews=user_reviews)
 
 
 if __name__ == "__main__":
