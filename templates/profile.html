@@ -13,68 +13,68 @@
                     alt="user profile image">
             </div>
             <div class="col-10 col-md-6">
-                <ul class="list-group">
+                <ul class="list-group list-group-flush">
                     <li class="list-group-item">
-                        Member since: #
+                        Member since: {{ user.date_registered }}
                     </li>
                     <li class="list-group-item">
                         Number of reviews: #
                     </li>
                     <li class="list-group-item">
-                        Traveller type: {{ user.holiday_type.title() }}
+                        Traveller type: {{ traveller_type.title() }}
                     </li>
                 </ul>
             </div>
+        </div>
+        <!-- review buttons -->
+        <div class="d-flex justify-content-center">
+            <a class="btn btn-primary my-2 me-2" href="#">Write New Review</a>
+            <a class="btn btn-primary my-2" href="#">Go To Charts</a>
         </div>
     </div>
     <!-- USER REVIEWS -->
     <div class="col-12 col-md-7 black-outline p-4">
         <h2 class="mb-3 text-center">{{user.username}}'s Reviews</h2>
-        <div class="accordion" id="accordionPanelsStayOpenExample">
-            {% for review in reviews %}
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="panelsStayOpen-headingOne">
-                    <button class="d-flex black-outline accordion-button" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
-                        aria-controls="panelsStayOpen-collapseOne">
-
-                        <!-- review location -->
-                        <div><strong>{{review.location.title()}}, {{review.country.title()}}</strong></div>
-                        <!-- review star rating -->
-                        <div class="review-rating text-center">
+        {% if reviews|length == 0 %}
+        <p class="text-center">No reviews to show</p>
+        {% else %}
+        {% for review in reviews %}
+        <div class="card w-100 mb-4">
+            <div class="card-body">
+                <div class="row black-outline p-2 mb-2">
+                    <div class="col-6 d-flex align-items-center">
+                        <h5 class="card-title">
+                            <strong>{{review.location.title()}}, {{review.country.title()}}</strong>
                             {% for i in range(0, review.rating) %}
                             <i class="fas fa-star"></i>
                             {% endfor %}
-                        </div>
-                        <!-- customize buttons -->
-                        <div class="ms-auto">
-                            <a class="btn btn-secondary btn-round" href="#"><i class="far fa-edit"></i></a>
-                            <a class="btn btn-secondary btn-round" href="#"><i class="far fa-trash-alt"></i></a>
-                        </div>
-                    </button>
-                </h2>
-                <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show"
-                    aria-labelledby="panelsStayOpen-headingOne">
-                    <div class="accordion-body">
-                        <!-- review details -->
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">
-                                Date visited: {{review.date_visited}}
-                            </li>
-                            <li class="list-group-item">
-                                <p><q>{{ review.comment }}</q></p>
-                            </li>
-                        </ul>
-                        <!-- review buttons -->
-                        <div class="d-flex justify-content-end">
-                            <a class="btn btn-primary mb-2" href="#">View Full Review</a>
-                        </div>
+                        </h5>
                     </div>
+                    <div class="col-6 d-flex justify-content-end align-items-center">
+                        <!-- customize buttons -->
+                        <a class="btn btn-secondary btn-round me-2" href="#"><i class="far fa-edit"></i></a>
+                        <a class="btn btn-secondary btn-round" href="#"><i class="far fa-trash-alt"></i></a>
+                    </div>
+                </div>
 
+                <!-- review details -->
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        Date visited: {{review.date_visited}}
+                    </li>
+                    <li class="list-group-item">
+                        <p><q>{{ review.comment }}</q></p>
+                    </li>
+                </ul>
+
+                <!-- review buttons -->
+                <div class="d-flex justify-content-end">
+                    <a class="btn btn-primary" href="#">View Full Review</a>
                 </div>
             </div>
-            {% endfor %}
         </div>
+        {% endfor %}
+        {% endif %}
     </div>
 
 </div>
