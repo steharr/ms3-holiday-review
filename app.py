@@ -78,6 +78,8 @@ def login():
 
 @app.route("/profile")
 def profile():
+    # set the current url for the session
+    session['url'] = url_for('profile')
     # get the session user from the db
     user = mongo.db.users.find_one({'username': session['user']})
     # get the session users reviews from the db
@@ -87,6 +89,12 @@ def profile():
         {'holiday_type': user['holiday_type']})
 
     return render_template("profile.html", user=user, reviews=user_reviews, traveller_type=holiday_type['traveller_type'])
+
+
+@app.route("/read_review/<review_id>")
+def read_review(review_id):
+    review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
+    return render_template("read_review.html", review=review, prev_url=session['url'])
 
 
 if __name__ == "__main__":
