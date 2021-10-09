@@ -97,6 +97,12 @@ def read_review(review_id):
     return render_template("read_review.html", review=review, prev_url=session['url'])
 
 
+@app.route("/write_review")
+def write_review():
+    curr_date = date.today().strftime("%d %b %Y")
+    return render_template("write_review.html", curr_date=curr_date)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
