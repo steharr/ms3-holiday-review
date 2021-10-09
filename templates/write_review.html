@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<form action="">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-lg-8 d-inline-flex black-outline justify-content-center bg-light">
+            <div class="text-center">
+                <h5 class="my-3">Write New Review</h5>
+
+                <!-- review date information -->
+                <label for="review-date">Review Date</label>
+                <input class="form-control mb-2 text-muted" name="review-date" id="review-date" type="text"
+                    readonly="readonly" value="{{curr_date}}">
+
+                <!-- holiday date information -->
+                <div class="d-flex my-2 p-2 grey-outline rounded-edges">
+                    <label for="review-date"><strong>Visited During:</strong></label>
+                    <!-- dropdown -->
+                    <select class="form-select" aria-label="Default select example" required>
+                        <option value="" selected>Open this select menu</option>
+                        <option value="spring">Spring</option>
+                        <option value="summer">Summer</option>
+                        <option value="autumn">Autumn</option>
+                        <option value="winter">Winter</option>
+                    </select>
+                </div>
+
+                <!-- review holiday type -->
+                <div class="d-flex my-2 p-2 grey-outline rounded-edges"><strong>Holiday Type:</strong>
+                    <!-- dropdown -->
+                </div>
+                <!-- review pros -->
+                <div class="d-flex my-2 p-2 grey-outline rounded-edges"><strong>Pros:</strong>
+                    <!-- tag selection -->
+
+                </div>
+                <!-- review cons -->
+                <div class="d-flex my-2 p-2 grey-outline rounded-edges"><strong>Cons:</strong>
+                    <!-- tag selection -->
+                </div>
+
+                <!-- review cost -->
+                <div class="d-flex align-items-center my-2 p-2 grey-outline rounded-edges"><strong>Cost Rating:</strong>
+                    <!-- range selection -->
+
+
+                </div>
+
+                <!-- review comments -->
+                <div class="d-flex  flex-column my-2 p-2 grey-outline rounded-edges">
+                    <!-- textbox -->
+                </div>
+                <!-- review rating -->
+                <div class="d-flex  flex-column my-2 p-2 grey-outline rounded-edges">
+                    <!-- range selection -->
+                </div>
+
+                <!-- review buttons -->
+                <div class="d-flex my-4 justify-content-center">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+
+
+{% endblock %}
