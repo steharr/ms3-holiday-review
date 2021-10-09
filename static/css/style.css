@@ -1,3 +1,7 @@
+.img-profile{
+    width:12rem;
+}
+
 .black-outline{
     border: 1px solid black;
 }
@@ -16,9 +20,8 @@
 }
 
 .btn-round{
-    height: 2.5rem;
-    width: 2.5rem;
-
+    height: 1rem;
+    width: 1rem;
     border-radius: 50%;
 }
 
@@ -30,8 +33,9 @@
     border: 1px solid #ddeaf0;
 }
 .filled-star{
+    padding-top:.35rem;
     height: 4rem;
-    font-size: 2rem;
+    font-size: 1.75rem;
     color: #f5b505;
 }
 

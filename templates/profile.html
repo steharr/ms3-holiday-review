@@ -2,17 +2,17 @@
 {% block content %}
 
 
-<div class="row justify-content-around align-items-center px-2">
-    <div class="col-12 col-md-4 black-outline text-center my-3">
+<div class="row justify-content-around align-items-center">
+    <div class="col-12 col-md-5 black-outline text-center">
         <!-- PROFILE STATS -->
         <h2 class="mb-3">{{user.username}}'s Profile</h2>
         <div class="row justify-content-around align-items-center">
-            <div class="col-10 col-md-4 col-lg-5">
+            <div class="col-12 col-lg-6">
                 <!-- profile image provided via dicebears avatars HTTP-API: https://avatars.dicebear.com/ -->
-                <img class="img-thumbnail" src="https://avatars.dicebear.com/api/avataaars/{{ user.username }}.svg"
-                    alt="user profile image">
+                <img class="img-profile black-outline"
+                    src="https://avatars.dicebear.com/api/avataaars/{{ user.username }}.svg" alt="user profile image">
             </div>
-            <div class="col-10 col-md-6">
+            <div class="col-12 col-lg-6">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">
                         Member since: {{ user.date_registered }}
@@ -33,7 +33,7 @@
         </div>
     </div>
     <!-- USER REVIEWS -->
-    <div class="col-12 col-md-7 black-outline p-4">
+    <div class="col-12 col-md-7">
         <h2 class="mb-3 text-center">{{user.username}}'s Reviews</h2>
         {% if reviews|length == 0 %}
         <p class="text-center">No reviews to show</p>
@@ -41,23 +41,18 @@
         {% for review in reviews %}
         <div class="card w-100 mb-4">
             <div class="card-body">
-                <div class="row black-outline p-2 mb-2">
-                    <div class="col-6 d-flex align-items-center">
+                <div class="row black-outline mb-2">
+                    <div class="col-12 d-flex align-items-center">
                         <h5 class="card-title">
                             <strong>{{review.location.title()}}, {{review.country.title()}}</strong>
                         </h5>
-                        <div class="d-flex ms-1">
+                        <div class="d-flex ms-auto">
                             {% for i in range(0, review.rating) %}
                             <div class="filled-star">
                                 <i class="fas fa-star"></i>
                             </div>
                             {% endfor %}
                         </div>
-                    </div>
-                    <div class="col-6 d-flex justify-content-end align-items-center">
-                        <!-- customize buttons -->
-                        <a class="btn btn-secondary btn-round me-2" href="#"><i class="far fa-edit"></i></a>
-                        <a class="btn btn-secondary btn-round" href="#"><i class="far fa-trash-alt"></i></a>
                     </div>
                 </div>
 
@@ -73,8 +68,9 @@
 
                 <!-- review buttons -->
                 <div class="d-flex justify-content-end">
-                    <a class="btn btn-primary" href="{{ url_for('read_review', review_id=review._id) }}">View Full
-                        Review</a>
+                    <a class="btn btn-primary" href="{{ url_for('read_review', review_id=review._id) }}">View</a>
+                    <a class="btn btn-secondary ms-2" href="#">Edit</a>
+                    <a class="btn btn-danger ms-2" href="#">Delete</a>
                 </div>
             </div>
         </div>
