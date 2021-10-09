@@ -1,66 +1,88 @@
 {% extends "base.html" %}
 {% block content %}
 
-{{prev_url}}
-{{review}}
-
-<div class="row black-outline bg-light mx-1">
-    <div class="col-12 text-center">
-        <h5 class="my-3"> {{ review.location|title}},{{ review.country|title}} Review </h5>
-        <h6 class="mb-2 text-muted">By: {{ review.username }}</h6>
-        <div class="d-flex my-2 p-2 grey-outline rounded-edges"><strong>Holiday Type:</strong>
-            <span class="ms-2">{{
-                review.holiday_type|title
-                }}</span>
-        </div>
-        <div class="d-flex my-2 p-2 grey-outline rounded-edges"><strong>Pros:</strong>
-            {% for item in review.holiday_pros %}
-            <span class="badge rounded-pill bg-success ms-2">
-                {{
-                item|title
-                }}
-            </span>
-            {% endfor %}
-        </div>
-        <div class="d-flex my-2 p-2 grey-outline rounded-edges"><strong>Cons:</strong>
-            {% for item in review.holiday_cons %}
-            <span class="badge rounded-pill bg-danger ms-2">
-                {{
-                item|title
-                }}
-            </span>
-            {% endfor %}
-        </div>
-        <div class="d-flex align-items-center my-2 p-2 grey-outline rounded-edges"><strong>Cost Rating:</strong>
-            {% for i in range(0, review.cost) %}
-            <span class="d-flex justify-content-center align-items-center filled-currency ms-2">
-                <i class="fas fa-euro-sign"></i>
-            </span>
-            {% endfor %}
-
-            {% if review.cost < 3 %} {% for i in range(0, 3-review.cost) %} <span
-                class="d-flexjustify-content-center align-items-center unfilled-currency ms-2">
-                <i class="fas fa-euro-sign"></i>
+<div class="row justify-content-center align-items-center">
+    <div class="col-lg-8 d-inline-flex black-outline justify-content-center bg-light">
+        <div class="text-center">
+            <h5 class="my-3"> {{ review.location|title}},{{ review.country|title}} Review </h5>
+            <h6 class="mb-2 text-muted">By {{ review.username }} on {{ review.date_reviewed }}</h6>
+            <!-- review dates information -->
+            <div class="d-flex my-2 p-2 grey-outline rounded-edges"><strong>Visited During:</strong>
+                <span class="ms-2">{{
+                    review.time_visited|title
+                    }}</span>
+            </div>
+            <!-- review holiday type -->
+            <div class="d-flex my-2 p-2 grey-outline rounded-edges"><strong>Holiday Type:</strong>
+                <span class="ms-2">{{
+                    review.holiday_type|title
+                    }}</span>
+            </div>
+            <!-- review pros -->
+            <div class="d-flex my-2 p-2 grey-outline rounded-edges"><strong>Pros:</strong>
+                {% for item in review.holiday_pros %}
+                <span class="badge rounded-pill bg-success ms-2">
+                    {{
+                    item|title
+                    }}
                 </span>
                 {% endfor %}
-                {%endif%}
-        </div>
-        <div class="d-flex  flex-column my-2 p-2 grey-outline rounded-edges">
-            <strong>Comments</strong>
-            <p>
-                {{review.comment}}
-            </p>
-        </div>
-        <div class="d-flex  flex-column my-2 p-2 grey-outline rounded-edges">
-            <strong>{{review.username}}'s Final Rating</strong>
-            <div class="d-flex justify-content-center align-items-center">
-                {% for i in range(0, review.rating) %}
-                <i class="fas fa-star"></i>
+            </div>
+            <!-- review cons -->
+            <div class="d-flex my-2 p-2 grey-outline rounded-edges"><strong>Cons:</strong>
+                {% for item in review.holiday_cons %}
+                <span class="badge rounded-pill bg-danger ms-2">
+                    {{
+                    item|title
+                    }}
+                </span>
                 {% endfor %}
             </div>
+            <!-- review cost -->
+            <div class="d-flex align-items-center my-2 p-2 grey-outline rounded-edges"><strong>Cost Rating:</strong>
+                {% for i in range(0, review.cost) %}
+                <span class="d-flex justify-content-center align-items-center filled-currency ms-2">
+                    <i class="fas fa-euro-sign"></i>
+                </span>
+                {% endfor %}
 
+                {% if review.cost < 3 %} {% for i in range(0, 3-review.cost) %} <span
+                    class="d-flex justify-content-center align-items-center unfilled-currency ms-2">
+                    <i class="fas fa-euro-sign"></i>
+                    </span>
+                    {% endfor %}
+                    {%endif%}
+            </div>
+            <!-- review comments -->
+            <div class="d-flex  flex-column my-2 p-2 grey-outline rounded-edges">
+                <strong>Comments</strong>
+                <p>
+                    {{review.comment}}
+                </p>
+            </div>
+            <!-- review rating -->
+            <div class="d-flex  flex-column my-2 p-2 grey-outline rounded-edges">
+                <strong>{{review.username}}'s Final Rating</strong>
+                <div class="d-flex justify-content-center align-items-center">
+                    {% for i in range(0, review.rating) %}
+                    <div class="filled-star">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- review buttons -->
+            <div class="d-flex my-4 justify-content-center">
+                {% if "profile" in prev_url %}
+                <a class="btn btn-primary" href="{{url_for('profile')}}">
+                    Go Back to Profile
+                </a>
+                {% endif %}
+            </div>
         </div>
     </div>
 </div>
+
 
 {% endblock %}
