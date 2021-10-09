@@ -55,3 +55,20 @@
     border: .125rem solid #ebebeb;
     color: #c2c2c2;
 }
+
+
+/* sticky footer with flexbox */
+/* copied from: https://css-tricks.com/couple-takes-sticky-footer/ */
+html, body{
+    height: 100%;
+}
+body {
+    display: flex;
+    flex-direction: column;
+}
+.content{
+    flex: 1 0 auto;
+}
+.footer {
+    flex-shrink: 0;
+}
