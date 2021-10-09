@@ -69,7 +69,8 @@
 
                 <!-- review buttons -->
                 <div class="d-flex justify-content-end">
-                    <a class="btn btn-primary" href="#">View Full Review</a>
+                    <a class="btn btn-primary" href="{{ url_for('read_review', review_id=review._id) }}">View Full
+                        Review</a>
                 </div>
             </div>
         </div>
