@@ -45,10 +45,14 @@
                     <div class="col-6 d-flex align-items-center">
                         <h5 class="card-title">
                             <strong>{{review.location.title()}}, {{review.country.title()}}</strong>
-                            {% for i in range(0, review.rating) %}
-                            <i class="fas fa-star"></i>
-                            {% endfor %}
                         </h5>
+                        <div class="d-flex ms-1">
+                            {% for i in range(0, review.rating) %}
+                            <div class="filled-star">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            {% endfor %}
+                        </div>
                     </div>
                     <div class="col-6 d-flex justify-content-end align-items-center">
                         <!-- customize buttons -->
