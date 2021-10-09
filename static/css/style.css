@@ -21,3 +21,27 @@
 
     border-radius: 50%;
 }
+
+.rounded-edges{
+    border-radius: 5px;
+}
+
+.grey-outline{
+    border: 1px solid #ddeaf0;
+}
+.filled-currency{
+    border-radius: 50%;
+    height: 2rem;
+    width: 2rem;
+    background-color: #f5b505;
+    border: .125rem solid #ffd86e;
+    color: #8a6501;
+}
+.unfilled-currency{
+    border-radius: 50%;
+    height: 2rem;
+    width: 2rem;
+    background-color: #e6e6e6;
+    border: .125rem solid #ebebeb;
+    color: #c2c2c2;
+}
