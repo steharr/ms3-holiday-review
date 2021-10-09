@@ -29,6 +29,12 @@
 .grey-outline{
     border: 1px solid #ddeaf0;
 }
+.filled-star{
+    height: 4rem;
+    font-size: 2rem;
+    color: #f5b505;
+}
+
 .filled-currency{
     border-radius: 50%;
     height: 2rem;
