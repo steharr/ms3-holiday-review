@@ -100,7 +100,10 @@ def read_review(review_id):
 @app.route("/write_review")
 def write_review():
     curr_date = date.today().strftime("%d %b %Y")
-    return render_template("write_review.html", curr_date=curr_date)
+    holiday_type = mongo.db.holiday_type.find()
+    pros = list(mongo.db.pros.find())
+    cons = list(mongo.db.cons.find())
+    return render_template("write_review.html", holiday_type=holiday_type, cons=cons, pros=pros, curr_date=curr_date)
 
 
 if __name__ == "__main__":
