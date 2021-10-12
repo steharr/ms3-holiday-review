@@ -8,6 +8,19 @@
             <div class="w-100 text-center">
                 <h5 class="my-3">Write New Review</h5>
 
+                <!-- flash messages -->
+                <div class="flash-authentification">
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                    {% for category, message in messages %}
+                    <h4 class="flash-authentication text-{{category}} fs-6">
+                        {{message}}
+                    </h4>
+                    {% endfor %}
+                    {% endif %}
+                    {% endwith %}
+                </div>
+
                 <!-- review date information -->
                 <div class="row my-2 p-2 grey-outline rounded-edges">
                     <div class="col-4 d-flex align-items-center">
@@ -28,8 +41,7 @@
                     </div>
                     <!-- dropdown -->
                     <div class="col-8">
-                        <input required minlength="2" pattern="^[a-zA-Z]" class="form-control" name="country"
-                            id="country" type="text">
+                        <input required minlength="2" class="form-control" name="country" id="country" type="text">
                     </div>
                 </div>
 
@@ -42,8 +54,7 @@
                     </div>
                     <!-- dropdown -->
                     <div class="col-8">
-                        <input required minlength="2" pattern="^[a-zA-Z]" class="form-control" name="location"
-                            id="location" type="text">
+                        <input required minlength="2" class="form-control" name="location" id="location" type="text">
                     </div>
                 </div>
 

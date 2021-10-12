@@ -114,6 +114,7 @@ def write_review():
             "date_reviewed": request.form.get("date_reviewed")
         }
         mongo.db.reviews.insert_one(submit)
+        flash('Review Submitted!', category='success')
 
     curr_date = date.today().strftime("%d %b %Y")
     holiday_type = mongo.db.holiday_type.find()
