@@ -38,6 +38,12 @@
     font-size: 1.75rem;
     color: #f5b505;
 }
+.unfilled-star{
+    padding-top:.35rem;
+    height: 4rem;
+    font-size: 1.75rem;
+    color: #c2c2c2;
+}
 
 .filled-currency{
     border-radius: 50%;
