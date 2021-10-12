@@ -9,41 +9,135 @@
                 <h5 class="my-3">Write New Review</h5>
 
                 <!-- review date information -->
-                <label for="review-date">Review Date</label>
-                <input class="form-control mb-2 text-muted" name="review-date" id="review-date" type="text"
-                    readonly="readonly" value="{{curr_date}}">
+                <div class="row my-2 p-2 grey-outline rounded-edges">
+                    <div class="col-4 d-flex align-items-center">
+                        <label for="review-date">Review Date</label>
+                    </div>
+                    <div class="col-8">
+                        <input class="form-control text-muted" name="review-date" id="review-date" type="text"
+                            readonly="readonly" value="{{curr_date}}">
+                    </div>
+                </div>
 
                 <!-- holiday date information -->
-                <div class="d-flex my-2 p-2 grey-outline rounded-edges">
-                    <label for="review-date"><strong>Visited During:</strong></label>
+                <div class="row my-2 p-2 grey-outline rounded-edges">
+                    <div class="col-4 p-0 d-flex align-items-center">
+                        <label for="season">Visited
+                            During:</label>
+                    </div>
                     <!-- dropdown -->
-                    <select class="form-select" aria-label="Default select example" required>
-                        <option value="" selected>Open this select menu</option>
-                        <option value="spring">Spring</option>
-                        <option value="summer">Summer</option>
-                        <option value="autumn">Autumn</option>
-                        <option value="winter">Winter</option>
-                    </select>
+                    <div class="col-8">
+                        <select class="form-select" name="season" id="season" aria-label="Default select example"
+                            required>
+                            <option value="" selected>Choose a season</option>
+                            <option value="spring">Spring</option>
+                            <option value="summer">Summer</option>
+                            <option value="autumn">Autumn</option>
+                            <option value="winter">Winter</option>
+                        </select>
+                    </div>
                 </div>
 
                 <!-- review holiday type -->
-                <div class="d-flex my-2 p-2 grey-outline rounded-edges"><strong>Holiday Type:</strong>
+                <div class="row my-2 p-2 grey-outline rounded-edges">
+                    <div class="col-4 p-0 d-flex align-items-center">
+                        <label for="type">
+                            Holiday Type:
+                        </label>
+                    </div>
                     <!-- dropdown -->
+                    <div class="col-8">
+                        <select class="form-select" name="type" id="type" aria-label="Default select example" required>
+                            <option value="" selected>Choose a type</option>
+                            {% for type in holiday_type %}
+                            <option value="{{type.holiday_type}}">{{type.holiday_type|title}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
                 </div>
-                <!-- review pros -->
-                <div class="d-flex my-2 p-2 grey-outline rounded-edges"><strong>Pros:</strong>
-                    <!-- tag selection -->
-
+                <!-- review holiday type -->
+                <div class="row my-2 p-2 grey-outline rounded-edges">
+                    <div class="col-4 p-0 d-flex align-items-center">
+                        <label for="pros">
+                            Pros:
+                        </label>
+                    </div>
+                    <!-- dropdown -->
+                    <div class="col-8">
+                        <select class="form-select" name="pros" id="pros" aria-label="Default select example"
+                            size="{{pros|length}}" required multiple>
+                            {% for pro in pros %}
+                            <option value="{{pro.name}}">{{pro.name|title}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
                 </div>
                 <!-- review cons -->
-                <div class="d-flex my-2 p-2 grey-outline rounded-edges"><strong>Cons:</strong>
-                    <!-- tag selection -->
+                <div class="row my-2 p-2 grey-outline rounded-edges">
+                    <div class="col-4 p-0 d-flex align-items-center">
+                        <label for="cons">
+                            Cons:
+                        </label>
+                    </div>
+                    <!-- dropdown -->
+                    <div class="col-8">
+                        <select class="form-select" name="cons" id="cons" aria-label="Default select example"
+                            size="{{pros|length}}" required multiple>
+                            {% for con in cons %}
+                            <option value="{{con.name}}">{{con.name|title}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
                 </div>
 
                 <!-- review cost -->
-                <div class="d-flex align-items-center my-2 p-2 grey-outline rounded-edges"><strong>Cost Rating:</strong>
+                <div class="row flex-column my-2 p-2 grey-outline rounded-edges">
                     <!-- range selection -->
-
+                    <label class="mb-2" for="cost">
+                        Cost Rating
+                    </label>
+                    <div class="d-flex my-3 justify-content-center" id="cost-rating-display">
+                        <span class="d-flex justify-content-center align-items-center unfilled-currency ms-2"
+                            id="currency-1">
+                            <i class="fas fa-euro-sign"></i>
+                        </span>
+                        <span class="d-flex justify-content-center align-items-center unfilled-currency ms-2"
+                            id="currency-2">
+                            <i class="fas fa-euro-sign"></i>
+                        </span>
+                        <span class="d-flex justify-content-center align-items-center unfilled-currency ms-2"
+                            id="currency-3">
+                            <i class="fas fa-euro-sign"></i>
+                        </span>
+                    </div>
+                    <input type="range" class="form-range w-50 mx-auto" name="cost" min="1" max="3" value="0"
+                        onchange="highlightIcon(this.value,'currency', 3)" step="1" id="cost">
+                </div>
+                <!-- review rating -->
+                <div class="row flex-column my-2 p-2 grey-outline rounded-edges">
+                    <!-- range selection -->
+                    <label class="mb-2" for="cost">
+                        Review Rating
+                    </label>
+                    <div class="d-flex my-3 justify-content-center" id="cost-rating-display">
+                        <span class="d-flex justify-content-center align-items-center unfilled-star ms-2" id="star-1">
+                            <i class="fas fa-star"></i>
+                        </span>
+                        <span class="d-flex justify-content-center align-items-center unfilled-star ms-2" id="star-2">
+                            <i class="fas fa-star"></i>
+                        </span>
+                        <span class="d-flex justify-content-center align-items-center unfilled-star ms-2" id="star-3">
+                            <i class="fas fa-star"></i>
+                        </span>
+                        <span class="d-flex justify-content-center align-items-center unfilled-star ms-2" id="star-4">
+                            <i class="fas fa-star"></i>
+                        </span>
+                        <span class="d-flex justify-content-center align-items-center unfilled-star ms-2" id="star-5">
+                            <i class="fas fa-star"></i>
+                        </span>
+                    </div>
+                    <input type="range" class="form-range w-50 mx-auto" name="cost" min="1" max="5" value="0"
+                        onchange="highlightIcon(this.value,'star', 5)" step="1" id="cost">
 
                 </div>
 
