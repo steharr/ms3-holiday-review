@@ -97,8 +97,24 @@ def read_review(review_id):
     return render_template("read_review.html", review=review, prev_url=session['url'])
 
 
-@app.route("/write_review")
+@app.route("/write_review", methods=["GET", "POST"])
 def write_review():
+    if request.method == "POST":
+        submit = {
+            "username": session["user"],
+            "country": request.form.get("country"),
+            "location": request.form.get("location"),
+            "holiday_type": request.form.get("holiday_type"),
+            "holiday_pros": list(request.form.get("holiday_pros")),
+            "holiday_cons": list(request.form.get("holiday_cons")),
+            "rating": int(request.form.get("rating")),
+            "comment": request.form.get("comment"),
+            "cost": int(request.form.get("cost")),
+            "time_visited": request.form.get("time_visited"),
+            "date_reviewed": request.form.get("date_reviewed")
+        }
+        mongo.db.reviews.insert_one(submit)
+
     curr_date = date.today().strftime("%d %b %Y")
     holiday_type = mongo.db.holiday_type.find()
     pros = list(mongo.db.pros.find())
