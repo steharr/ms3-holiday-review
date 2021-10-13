@@ -123,6 +123,16 @@ def write_review():
     return render_template("write_review.html", holiday_type=holiday_type, cons=cons, pros=pros, curr_date=curr_date)
 
 
+@app.route("/edit_review/<review_id>", methods=["GET", "POST"])
+def edit_review(review_id):
+    review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
+    seasons = ["spring", "summer", "autumn", "winter"]
+    holiday_type = mongo.db.holiday_type.find()
+    pros = list(mongo.db.pros.find())
+    cons = list(mongo.db.cons.find())
+    return render_template("edit_review.html", review=review, seasons=seasons, holiday_type=holiday_type, cons=cons, pros=pros, prev_url=session['url'])
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
