@@ -80,6 +80,7 @@ def login():
 @app.route("/logout")
 def logout():
     session.clear()
+    flash("Logout Succesful")
     return redirect(url_for('login'))
 
 
@@ -164,6 +165,11 @@ def delete_review(review_id):
     review = mongo.db.reviews.delete_one({"_id": ObjectId(review_id)})
     flash("Review Successfully Deleted!", category="success")
     return redirect(url_for('profile'))
+
+
+@app.route("/charts")
+def charts():
+    return render_template("charts.html")
 
 
 if __name__ == "__main__":
