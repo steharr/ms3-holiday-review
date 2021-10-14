@@ -152,6 +152,12 @@ def edit_review(review_id):
     return render_template("edit_review.html", review=review, seasons=seasons, holiday_type=holiday_type, cons=cons, pros=pros, prev_url=session['url'])
 
 
+@app.route("/delete_review/<review_id>")
+def delete_review(review_id):
+    review = mongo.db.reviews.delete_one({"_id": ObjectId(review_id)})
+    return redirect(url_for('profile'))
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
