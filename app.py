@@ -125,6 +125,23 @@ def write_review():
 
 @app.route("/edit_review/<review_id>", methods=["GET", "POST"])
 def edit_review(review_id):
+    if request.method == "POST":
+        submit = {
+            "username": session["user"],
+            "country": request.form.get("country"),
+            "location": request.form.get("location"),
+            "holiday_type": request.form.get("holiday_type"),
+            "holiday_pros": request.form.getlist("holiday_pros"),
+            "holiday_cons": request.form.getlist("holiday_cons"),
+            "rating": int(request.form.get("rating")),
+            "comment": request.form.get("comment"),
+            "cost": int(request.form.get("cost")),
+            "time_visited": request.form.get("time_visited"),
+            "date_reviewed": request.form.get("date_reviewed")
+        }
+        mongo.db.reviews.update({"_id": ObjectId(review_id)}, submit)
+        flash('Review Updated!', category='success')
+
     review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
     seasons = ["spring", "summer", "autumn", "winter"]
     holiday_type = mongo.db.holiday_type.find()
