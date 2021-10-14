@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<form class="needs-validation" novalidate method="POST" action="{{ url_for('write_review') }}">
+<form class="needs-validation" novalidate method="POST" action="{{ url_for('edit_review',review_id=review._id) }}">
     <div class="row justify-content-center align-items-center">
         <div class="col-lg-6 my-4 p-4 d-inline-flex black-outline justify-content-center bg-light">
             <div class="w-100 text-center">
@@ -159,12 +159,12 @@
                         {% for i in range(1, 4) %}
                         {% if i <= review.cost %} <span
                             class="d-flex justify-content-center align-items-center filled-currency ms-2"
-                            id="currency-1">
+                            id="currency-{{i}}">
                             <i class="fas fa-euro-sign"></i>
                             </span>
                             {% else %}
                             <span class="d-flex justify-content-center align-items-center unfilled-currency ms-2"
-                                id="currency-2">
+                                id="currency-{{i}}">
                                 <i class="fas fa-euro-sign"></i>
                             </span>
                             {% endif %}
@@ -183,12 +183,12 @@
                     <div class="d-flex justify-content-center" id="cost-rating-display">
                         {% for i in range(1, 6) %}
                         {% if i <= review.rating %}<span
-                            class="d-flex justify-content-center align-items-center filled-star ms-2" id="star-1">
+                            class="d-flex justify-content-center align-items-center filled-star ms-2" id="star-{{i}}">
                             <i class="fas fa-star"></i>
                             </span>
                             {% else %}
                             <span class="d-flex justify-content-center align-items-center unfilled-star ms-2"
-                                id="star-2">
+                                id="star-{{i}}">
                                 <i class="fas fa-star"></i>
                             </span>
                             {% endif %}
