@@ -20,7 +20,7 @@
 
 // for cost rating slider
 function highlightIcon(num, iconType, limit) {
-    for (i = 1; i <= limit; i++) {
+    for (let i = 1; i <= limit; i++) {
         let icon = document.querySelector(`#${iconType}-${i}`)
         let iconClasses = icon.classList;
         if (i <= num) {
@@ -34,5 +34,17 @@ function highlightIcon(num, iconType, limit) {
             }
             icon.classList.add(`unfilled-${iconType}`);
         }
+    }
+}
+
+// for delete button modal
+function passIdToModal(obj, actions) {
+    let reviewId = obj.getAttribute('data-review-id');
+    for (let i = 0; i <= actions.length; i++) {
+        console.log(i);
+        // find the modal on the page
+        let modalButton = document.querySelector(`#${actions[i]}ModalButton`);
+        // set its href to pass the review id to backend for the particular action needed
+        modalButton.setAttribute('href', `/${actions[i]}_review/${reviewId}`);
     }
 }
