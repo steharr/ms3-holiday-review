@@ -14,7 +14,9 @@
 .flash-authentification{
     height: 2rem;
 }
-
+.flash-authentification-large{
+    height: 5rem;
+}
 .review-rating{
     margin-left: 1rem;
 }
