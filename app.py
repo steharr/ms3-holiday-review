@@ -99,6 +99,7 @@ def read_review(review_id):
 
 @app.route("/write_review", methods=["GET", "POST"])
 def write_review():
+    session.pop('_flashes', None)
     if request.method == "POST":
         submit = {
             "username": session["user"],
@@ -125,6 +126,7 @@ def write_review():
 
 @app.route("/edit_review/<review_id>", methods=["GET", "POST"])
 def edit_review(review_id):
+    session.pop('_flashes', None)
     if request.method == "POST":
         submit = {
             "username": session["user"],
