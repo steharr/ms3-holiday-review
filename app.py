@@ -191,8 +191,11 @@ def charts():
         'avg_rating'), reverse=True)
 
     # calculate the cheapest locations
+    avg_costs = avg_cost_rating_per_location(locations, reviews)
+    avg_costs = sorted(avg_costs, key=itemgetter(
+        'avg_cost'))
 
-    return render_template("charts.html", avg_ratings=avg_ratings, avg_ratings_food=avg_ratings_food)
+    return render_template("charts.html", avg_ratings=avg_ratings, avg_ratings_food=avg_ratings_food, avg_costs=avg_costs)
 
 
 def extract_all_reviewed_locations(reviews):
@@ -212,6 +215,33 @@ def extract_all_reviewed_countries(reviews):
         if review_country not in countries:
             countries.append(review_country)
     return countries
+
+
+def avg_cost_rating_per_location(locations, reviews):
+
+    # init dict for storing avg_ratings per country
+    avg_ratings = []
+
+    # start loop to cycle through every possible location that has been reviewed
+    for location in locations:
+        location_rating = {}
+        location_count = 0
+        costs = []
+
+        # find all reviews which have the location being checked and also have food as a pro
+        for review in reviews:
+            if review['location'].lower() == location:
+                costs.append(review['cost'])
+                location_count += 1
+
+        # if there were some cases found add them to the return value
+        if costs:
+            location_rating['location'] = location
+            location_rating['avg_cost'] = round(sum(costs)/len(costs))
+            location_rating['total_reviews'] = location_count
+            avg_ratings.append(location_rating)
+
+    return avg_ratings
 
 
 def avg_ratings_per_location_with_food(locations, reviews):
