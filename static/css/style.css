@@ -1,6 +1,9 @@
 .img-profile{
     width:12rem;
 }
+.img-profile-small{
+    width:5rem;
+}
 
 .black-outline{
     border: 1px solid black;
