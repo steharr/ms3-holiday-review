@@ -45,7 +45,9 @@
                         {% for item in avg_ratings_food %}
                         <li class="list-group-item d-flex justify-content-between align-items-start">
                             <div class="ms-2 me-auto">
-                                <div class="fw-bold">{{item.location|title}}</div>
+                                <div class="fw-bold"><a
+                                        href="{{ url_for('reviews',data=item.location) }}">{{item.location|title}}</a>
+                                </div>
                                 Avg. Rating:
                                 {% if item.avg_rating >= 4 %}
                                 <span class="badge bg-success rounded-pill">{{item.avg_rating}}</span>
@@ -68,7 +70,9 @@
                         {% for item in avg_costs %}
                         <li class="list-group-item d-flex justify-content-between align-items-start">
                             <div class="ms-2 me-auto">
-                                <div class="fw-bold">{{item.location|title}}</div>
+                                <div class="fw-bold"><a
+                                        href="{{ url_for('reviews',data=item.location) }}">{{item.location|title}}</a>
+                                </div>
                                 Avg. Cost:
                                 {% for i in range(1, 4) %}
                                 <span class="d-flex">
