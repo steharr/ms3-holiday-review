@@ -195,7 +195,30 @@ def charts():
     avg_costs = sorted(avg_costs, key=itemgetter(
         'avg_cost'))
 
+    # trim the data (max 10 items should be sent to front end)
+
     return render_template("charts.html", avg_ratings=avg_ratings, avg_ratings_food=avg_ratings_food, avg_costs=avg_costs)
+
+
+@app.route("/reviews/<data>")
+def reviews(data):
+    # extract reviews from database
+    reviews = list(mongo.db.reviews.find())
+
+    # extract all countries reviewed
+    countries = extract_all_reviewed_countries(reviews)
+
+    # extract all locations reviewed
+    locations = extract_all_reviewed_locations(reviews)
+
+    if data in countries:
+        specific_reviews = list(
+            mongo.db.reviews.find({'country': data.lower()}))
+
+    else:
+        specific_reviews = mongo.db.reviews.find({'location': data.lower()})
+
+    return render_template('reviews.html', data=data, reviews=specific_reviews)
 
 
 def extract_all_reviewed_locations(reviews):
