@@ -52,7 +52,7 @@ def register():
         # flash indication
         flash('Registration Successful', category='success')
         # redirect to the users profile
-        return redirect(url_for('profile'))
+        return redirect(url_for('profile', username=session['user']))
 
     # direct to the profile page and session cookie set up for user
     return render_template("register.html", holiday_type=holiday_type)
@@ -70,7 +70,7 @@ def login():
             session["user"] = request.form.get("username").lower()
             # flash indication
             flash('Login Successful', category='success')
-            return redirect(url_for('profile'))
+            return redirect(url_for('profile', username=session["user"]))
         else:
             # flash indication
             flash('Login Failed', category='danger')
@@ -86,14 +86,14 @@ def logout():
     return redirect(url_for('login'))
 
 
-@app.route("/profile")
-def profile():
-    # set the current url for the session
-    session['url'] = url_for('profile')
-    # get the session user from the db
-    user = mongo.db.users.find_one({'username': session['user']})
+@app.route("/profile/<username>")
+def profile(username):
+    # set the current url
+    session['url'] = request.url
+    # get the profile user from the db
+    user = mongo.db.users.find_one({'username': username})
     # get the session users reviews from the db
-    user_reviews = list(mongo.db.reviews.find({'username': session['user']}))
+    user_reviews = list(mongo.db.reviews.find({'username': username}))
     # get the users traveller type based on preffered holiday type
     holiday_type = mongo.db.holiday_type.find_one(
         {'holiday_type': user['holiday_type']})
@@ -202,6 +202,9 @@ def charts():
 
 @app.route("/reviews/<data>")
 def reviews(data):
+    # set the current url
+    session['url'] = request.url
+
     # extract reviews from database
     reviews = list(mongo.db.reviews.find())
 

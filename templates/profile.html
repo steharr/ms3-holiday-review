@@ -40,7 +40,9 @@
         </div>
         <!-- review buttons -->
         <div class="d-flex justify-content-center">
+            {% if session.user == user.username %}
             <a class="btn btn-primary my-2 me-2" href="{{ url_for('write_review') }}">Write New Review</a>
+            {% endif %}
             <a class="btn btn-primary my-2" href="{{ url_for('charts') }}">Go To Charts</a>
         </div>
     </div>
@@ -79,14 +81,18 @@
                 </ul>
 
                 <!-- review buttons -->
+                <!-- review buttons -->
                 <div class="d-flex justify-content-end">
                     <a class="btn btn-primary" href="{{ url_for('read_review', review_id=review._id) }}">Read</a>
+
+                    {% if review.username == session.user %}
                     <a class="btn btn-secondary ms-2" href="{{ url_for('edit_review', review_id=review._id) }}">Edit</a>
                     <button type="button" data-review-id="{{review._id}}" class="btn btn-danger ms-2"
                         data-bs-toggle="modal" data-bs-target="#deleteModal"
                         onclick="passIdToModal(this,['delete','read'])">
                         Delete
                     </button>
+                    {% endif %}
                 </div>
             </div>
         </div>

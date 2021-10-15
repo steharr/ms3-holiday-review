@@ -43,14 +43,17 @@
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
                             <div class="d-flex align-items-center mb-2">
-                                {% if review.username == session.user %}
-                                Review By: <strong class="ms-1 text-success">{{review.username}}</strong>
-                                {% else %}
-                                Review By: {{review.username}}
-                                {% endif %}
+                                <a href="{{ url_for('profile', username=review.username) }}">
+                                    {% if review.username == session.user %}
+                                    Review By: <strong class="ms-1 text-success">{{review.username}}</strong>
+                                    {% else %}
+                                    Review By: {{review.username}}
+                                    {% endif %}
+                                </a>
                                 <img class="img-profile-small black-outline ms-auto"
                                     src="https://avatars.dicebear.com/api/avataaars/{{ review.username }}.svg"
                                     alt="user profile image">
+
                             </div>
                             <div>
                                 Time visited: {{review.time_visited|title}}

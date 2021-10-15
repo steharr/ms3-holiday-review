@@ -75,7 +75,7 @@
             <!-- review buttons -->
             <div class="d-flex my-4 justify-content-center">
                 {% if "profile" in prev_url %}
-                <a class="btn btn-primary" href="{{url_for('profile')}}">
+                <a class="btn btn-primary" href="{{url_for('profile', username=review.username)}}">
                     Go Back to Profile
                 </a>
                 {% endif %}
