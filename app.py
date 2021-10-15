@@ -173,28 +173,75 @@ def delete_review(review_id):
 def charts():
     # extract reviews from database
     reviews = list(mongo.db.reviews.find())
-    countries = extract_reviews_by_country(reviews)
+
+    # extract all countries reviewed
+    countries = extract_all_reviewed_countries(reviews)
+
+    # extract all locations reviewed
+    locations = extract_all_reviewed_locations(reviews)
+
+    # calculate best rated countries
     avg_ratings = avg_ratings_per_country(countries, reviews)
     avg_ratings = sorted(avg_ratings, key=itemgetter(
         'avg_rating'), reverse=True)
-    # calculate best rated locations
+
     # calculate best locations for food
+    avg_ratings_food = avg_ratings_per_location_with_food(locations, reviews)
+    avg_ratings_food = sorted(avg_ratings_food, key=itemgetter(
+        'avg_rating'), reverse=True)
+
     # calculate the cheapest locations
-    return render_template("charts.html", avg_ratings=avg_ratings)
+
+    return render_template("charts.html", avg_ratings=avg_ratings, avg_ratings_food=avg_ratings_food)
 
 
-def extract_reviews_by_country(reviews):
+def extract_all_reviewed_locations(reviews):
+    locations = []
+    for review in reviews:
+        review_location = review['location'].lower()
+        if review_location not in locations:
+            locations.append(review_location)
+    # print(locations)
+    return locations
+
+
+def extract_all_reviewed_countries(reviews):
     countries = []
     for review in reviews:
         review_country = review['country'].lower()
         if review_country not in countries:
             countries.append(review_country)
-    print(countries)
     return countries
 
 
-def avg_ratings_per_country(countries, reviews):
+def avg_ratings_per_location_with_food(locations, reviews):
 
+    # init dict for storing avg_ratings per country
+    avg_ratings = []
+
+    # start loop to cycle through every possible location that has been reviewed
+    for location in locations:
+        location_rating = {}
+        location_count = 0
+        ratings = []
+
+        # find all reviews which have the location being checked and also have food as a pro
+        for review in reviews:
+            if review['location'].lower() == location and "food" in review["holiday_pros"]:
+                ratings.append(review['rating'])
+                location_count += 1
+
+        # if there were some cases found add them to the return value
+        if ratings:
+            location_rating['location'] = location
+            location_rating['avg_rating'] = sum(ratings)/len(ratings)
+            location_rating['total_reviews'] = location_count
+            avg_ratings.append(location_rating)
+
+    return avg_ratings
+
+
+def avg_ratings_per_country(countries, reviews):
     # init dict for storing avg_ratings per country
     avg_ratings = []
 
