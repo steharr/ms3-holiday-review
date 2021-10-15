@@ -1,3 +1,36 @@
+body {
+    background-color: #FCF5C7;
+}
+.navbar{
+    font-size: 1rem;
+    background-color: #FFD799;
+}
+.navbar-brand{
+    font-size: 1.5rem;
+}
+.panel-site{
+    background-color: #FFEE93;
+    border-radius: 1rem;
+    box-shadow: .125rem .125rem .5rem;
+}
+.panel-inner{
+    background-color: #FFE75C;
+    border: .05rem solid #000;
+    border-radius: 1rem;
+    text-align: center;
+}
+.footer{
+    background-color: #FFC09F;
+}
+.panel-socials{
+    display: inline-block;
+    height: 3rem;
+    width: 8rem;
+}
+.socials{
+    color: #8AC2D0;
+    font-size: 2rem;
+}
 .img-profile{
     width:12rem;
 }

@@ -19,7 +19,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-info bg-gradient">
+    <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid">
             <a class="navbar-brand fw-bold" href="{{ url_for('landing') }}"><i class="fas fa-globe-europe"></i>
                 HolidayHub</a>
@@ -33,6 +33,13 @@
                     {% if session.user %}
                     <li class="nav-item disabled">
                         <a class="nav-link" href="{{ url_for('profile', username=session.user) }}">Profile</a>
+                    </li>
+                    <li class="nav-item disabled">
+                        <a class="nav-link" href="{{ url_for('write_review') }}">Write New
+                            Review</a>
+                    </li>
+                    <li class="nav-item disabled">
+                        <a class="nav-link" href="{{ url_for('charts') }}">View Charts</a>
                     </li>
                     <li class="nav-item disabled">
                         <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
@@ -58,7 +65,7 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container-fluid bg-warning">
+        <div class="container-fluid">
             <div class="row justify-content-center text-center">
                 <div class="col-md-6">
                     <h4>
@@ -76,15 +83,15 @@
                 </div>
                 <div class="col-md-6">
                     <h4>
-                        Social
+                        Our Socials
                     </h4>
-                    <p>
-                        <a href="https://www.linkedin.com/in/stephen-harrold-338235173/" target="_blank"
-                            rel="noopener"><i class="fab fa-linkedin"></i></a>
-                        <a href="https://github.com/steharr" target="_blank" rel="noopener"><i
-                                class="fab fa-github-square"></i></a>
-                        <a href="https://twitter.com/" target="_blank" rel="noopener"><i
+                    <p class="mx-auto panel-socials panel-inner">
+                        <a class="socials" href="https://twitter.com/" target="_blank" rel="noopener"><i
                                 class="fab fa-twitter-square"></i></a>
+                        <a class="socials" href="https://facebook.com/" target="_blank" rel="noopener"><i
+                                class="fab fa-facebook-square"></i></a>
+                        <a class="socials" href="https://instagram.com/" target="_blank" rel="noopener"><i
+                                class="fab fa-instagram-square"></i></a>
                     </p>
                 </div>
             </div>
