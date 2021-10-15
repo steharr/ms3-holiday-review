@@ -25,11 +25,11 @@
                                 </div>
                                 Avg. Rating:
                                 {% if item.avg_rating >= 4 %}
-                                <span class="badge bg-success rounded-pill">{{item.avg_rating}}</span>
+                                <span class="badge bg-success rounded-pill">{{item.avg_rating|round(1,'floor')}}</span>
                                 {% elif item.avg_rating > 2 %}
-                                <span class="badge bg-warning rounded-pill">{{item.avg_rating}}</span>
+                                <span class="badge bg-warning rounded-pill">{{item.avg_rating|round(1,'floor')}}</span>
                                 {% else %}
-                                <span class="badge bg-danger rounded-pill">{{item.avg_rating}}</span>
+                                <span class="badge bg-danger rounded-pill">{{item.avg_rating|round(1,'floor')}}</span>
                                 {% endif %}
                             </div>
                             <span class="badge bg-primary rounded-pill">Reviews: {{item.total_reviews}}</span>
@@ -73,22 +73,26 @@
                                 <div class="fw-bold"><a
                                         href="{{ url_for('reviews',data=item.location) }}">{{item.location|title}}</a>
                                 </div>
-                                Avg. Cost:
-                                {% for i in range(1, 4) %}
-                                <span class="d-flex">
-                                    {% if i <= item.avg_cost %} <span
-                                        class="d-flex justify-content-center align-items-center filled-currency ms-2"
+                                <div class="d-flex">
+                                    Avg. Cost:
+                                    {% for i in range(1, 4) %}
+                                    <span class="d-flex">
+                                        {% if i <= item.avg_cost %} <span
+                                            class="d-flex justify-content-center align-items-center filled-currency ms-2"
+                                            id="currency-{{i}}">
+                                            <i class="fas fa-euro-sign"></i>
+                                    </span>
+                                    {% else %}
+                                    <span
+                                        class="d-flex justify-content-center align-items-center unfilled-currency ms-2"
                                         id="currency-{{i}}">
                                         <i class="fas fa-euro-sign"></i>
-                                </span>
-                                {% else %}
-                                <span class="d-flex justify-content-center align-items-center unfilled-currency ms-2"
-                                    id="currency-{{i}}">
-                                    <i class="fas fa-euro-sign"></i>
-                                </span>
-                                {% endif %}
-                                {% endfor %}
-                                </span>
+                                    </span>
+                                    {% endif %}
+                                    {% endfor %}
+                                    </span>
+                                </div>
+
                             </div>
                             <span class="badge bg-primary rounded-pill">Reviews: {{item.total_reviews}}</span>
                         </li>

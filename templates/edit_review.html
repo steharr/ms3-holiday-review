@@ -213,6 +213,11 @@
                     data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="passIdToModal(this,['delete'])">
                     Delete Review
                 </button>
+                {% if "profile" in prev_url %}
+                <a class="btn btn-secondary ms-2" href="{{url_for('profile', username=review.username)}}">
+                    Go Back to Profile
+                </a>
+                {% endif %}
             </div>
         </div>
     </div>
@@ -231,7 +236,8 @@
                 Are you sure you want to delete this review?
             </div>
             <div class="modal-footer">
-                <a class="btn btn-danger ms-2" id="deleteModalButton" href="{{ url_for('profile') }}">Delete Review</a>
+                <a class="btn btn-danger ms-2" id="deleteModalButton"
+                    href="{{ url_for('profile', username=session.user) }}">Delete Review</a>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
         </div>
