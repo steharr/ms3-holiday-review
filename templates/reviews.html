@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="row justify-content-around align-items-center">
+<div class="row px-1 justify-content-around align-items-center">
     <!-- flash messages -->
     <div class="flash-authentification-large text-center pt-2">
         {% with messages = get_flashed_messages(with_categories=true) %}
@@ -14,10 +14,10 @@
         {% endif %}
         {% endwith %}
     </div>
-    <div class="col-12 black-outline text-center">
+    <div class="d-flex justify-content-center col-12 black-outline">
         <!-- USER REVIEWS -->
-        <div class="col-8">
-            <h2 class="mb-3 text-center">{{data}} Reviews</h2>
+        <div class="col-md-10">
+            <h2 class="mb-3 text-center">Reviews for: <strong>{{data|title}}</strong></h2>
             {% if reviews|length == 0 %}
             <p class="text-center">No reviews to show</p>
             {% else %}
@@ -42,7 +42,19 @@
                     <!-- review details -->
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
-                            Time visited: {{review.time_visited|title}}
+                            <div class="d-flex align-items-center mb-2">
+                                {% if review.username == session.user %}
+                                Review By: <strong class="ms-1 text-success">{{review.username}}</strong>
+                                {% else %}
+                                Review By: {{review.username}}
+                                {% endif %}
+                                <img class="img-profile black-outline w-25 ms-auto"
+                                    src="https://avatars.dicebear.com/api/avataaars/{{ review.username }}.svg"
+                                    alt="user profile image">
+                            </div>
+                            <div>
+                                Time visited: {{review.time_visited|title}}
+                            </div>
                         </li>
                         <li class="list-group-item">
                             <p><q>{{ review.comment }}</q></p>
@@ -52,6 +64,8 @@
                     <!-- review buttons -->
                     <div class="d-flex justify-content-end">
                         <a class="btn btn-primary" href="{{ url_for('read_review', review_id=review._id) }}">Read</a>
+
+                        {% if review.username == session.user %}
                         <a class="btn btn-secondary ms-2"
                             href="{{ url_for('edit_review', review_id=review._id) }}">Edit</a>
                         <button type="button" data-review-id="{{review._id}}" class="btn btn-danger ms-2"
@@ -59,6 +73,7 @@
                             onclick="passIdToModal(this,['delete','read'])">
                             Delete
                         </button>
+                        {% endif %}
                     </div>
                 </div>
             </div>
