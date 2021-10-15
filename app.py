@@ -113,8 +113,8 @@ def write_review():
     if request.method == "POST":
         submit = {
             "username": session["user"],
-            "country": request.form.get("country"),
-            "location": request.form.get("location"),
+            "country": request.form.get("country").lower(),
+            "location": request.form.get("location").lower(),
             "holiday_type": request.form.get("holiday_type"),
             "holiday_pros": request.form.getlist("holiday_pros"),
             "holiday_cons": request.form.getlist("holiday_cons"),
@@ -214,9 +214,9 @@ def reviews(data):
     if data in countries:
         specific_reviews = list(
             mongo.db.reviews.find({'country': data.lower()}))
-
     else:
-        specific_reviews = mongo.db.reviews.find({'location': data.lower()})
+        specific_reviews = list(
+            mongo.db.reviews.find({'location': data.lower()}))
 
     return render_template('reviews.html', data=data, reviews=specific_reviews)
 
