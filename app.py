@@ -5,6 +5,8 @@ from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import date
+from operator import itemgetter
+
 
 if os.path.exists('env.py'):
     import env
@@ -162,14 +164,58 @@ def edit_review(review_id):
 
 @app.route("/delete_review/<review_id>")
 def delete_review(review_id):
-    review = mongo.db.reviews.delete_one({"_id": ObjectId(review_id)})
+    mongo.db.reviews.delete_one({"_id": ObjectId(review_id)})
     flash("Review Successfully Deleted!", category="success")
     return redirect(url_for('profile'))
 
 
 @app.route("/charts")
 def charts():
-    return render_template("charts.html")
+    # extract reviews from database
+    reviews = list(mongo.db.reviews.find())
+    countries = extract_reviews_by_country(reviews)
+    avg_ratings = avg_ratings_per_country(countries, reviews)
+    avg_ratings = sorted(avg_ratings, key=itemgetter(
+        'avg_rating'), reverse=True)
+    # calculate best rated locations
+    # calculate best locations for food
+    # calculate the cheapest locations
+    return render_template("charts.html", avg_ratings=avg_ratings)
+
+
+def extract_reviews_by_country(reviews):
+    countries = []
+    for review in reviews:
+        review_country = review['country'].lower()
+        if review_country not in countries:
+            countries.append(review_country)
+    print(countries)
+    return countries
+
+
+def avg_ratings_per_country(countries, reviews):
+
+    # init dict for storing avg_ratings per country
+    avg_ratings = []
+
+    for country in countries:
+        country_rating = {}
+        country_count = 0
+        # init a list for storing reviews for country
+        ratings = []
+        for review in reviews:
+            review_country = review['country'].lower()
+            if review_country == country:
+                ratings.append(review['rating'])
+                country_count += 1
+        # add results to dictionary of data
+        country_rating['country'] = country
+        country_rating['avg_rating'] = sum(ratings)/len(ratings)
+        country_rating['total_reviews'] = country_count
+        # add dict to list of dicts
+        avg_ratings.append(country_rating)
+
+    return avg_ratings
 
 
 if __name__ == "__main__":
