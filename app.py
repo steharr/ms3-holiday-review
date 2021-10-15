@@ -1,6 +1,7 @@
 import os
 from flask import (Flask, flash, render_template,
                    redirect, request, session, url_for)
+from flask.helpers import get_flashed_messages
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -126,6 +127,7 @@ def write_review():
         }
         mongo.db.reviews.insert_one(submit)
         flash('Review Submitted!', category='success')
+        return redirect(url_for('profile', username=session['user']))
 
     curr_date = date.today().strftime("%d %b %Y")
     holiday_type = mongo.db.holiday_type.find()
@@ -153,6 +155,7 @@ def edit_review(review_id):
         }
         mongo.db.reviews.update({"_id": ObjectId(review_id)}, submit)
         flash('Review Updated!', category='success')
+        return redirect(url_for('profile', username=session['user']))
 
     review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
     seasons = ["spring", "summer", "autumn", "winter"]
@@ -166,7 +169,7 @@ def edit_review(review_id):
 def delete_review(review_id):
     mongo.db.reviews.delete_one({"_id": ObjectId(review_id)})
     flash("Review Successfully Deleted!", category="success")
-    return redirect(url_for('profile'))
+    return redirect(url_for('profile', username=session['user']))
 
 
 @app.route("/charts")
@@ -196,6 +199,9 @@ def charts():
         'avg_cost'))
 
     # trim the data (max 10 items should be sent to front end)
+    avg_costs = avg_costs[:10]
+    avg_ratings = avg_ratings[:10]
+    avg_ratings_food = avg_ratings_food[:10]
 
     return render_template("charts.html", avg_ratings=avg_ratings, avg_ratings_food=avg_ratings_food, avg_costs=avg_costs)
 
