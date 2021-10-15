@@ -11,107 +11,122 @@
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
                 aria-label="Slide 3"></button>
         </div>
+
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <h2 class="text-center">Top Overall Rated Countries</h2>
-                <div class="mx-auto">
-                    <ol class="list-group list-group-numbered">
+                <div class="w-75 mx-auto">
+                    <h2 class="text-center">Top Overall Rated Countries</h2>
+                    <div class="mx-auto">
+                        <ol class="list-group list-group-numbered">
 
-                        {% for item in avg_ratings %}
-                        <li class="list-group-item d-flex justify-content-between align-items-start">
-                            <div class="ms-2 me-auto">
-                                <div class="fw-bold"><a
-                                        href="{{ url_for('reviews',data=item.country) }}">{{item.country|title}}</a>
-                                </div>
-                                Avg. Rating:
-                                {% if item.avg_rating >= 4 %}
-                                <span class="badge bg-success rounded-pill">{{item.avg_rating|round(1,'floor')}}</span>
-                                {% elif item.avg_rating > 2 %}
-                                <span class="badge bg-warning rounded-pill">{{item.avg_rating|round(1,'floor')}}</span>
-                                {% else %}
-                                <span class="badge bg-danger rounded-pill">{{item.avg_rating|round(1,'floor')}}</span>
-                                {% endif %}
-                            </div>
-                            <span class="badge bg-primary rounded-pill">Reviews: {{item.total_reviews}}</span>
-                        </li>
-                        {% endfor %}
-                    </ol>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <h2 class="text-center">Best Locations for Food</h2>
-                <div class="mx-auto">
-                    <ol class="list-group list-group-numbered">
-                        {% for item in avg_ratings_food %}
-                        <li class="list-group-item d-flex justify-content-between align-items-start">
-                            <div class="ms-2 me-auto">
-                                <div class="fw-bold"><a
-                                        href="{{ url_for('reviews',data=item.location) }}">{{item.location|title}}</a>
-                                </div>
-                                Avg. Rating:
-                                {% if item.avg_rating >= 4 %}
-                                <span class="badge bg-success rounded-pill">{{item.avg_rating}}</span>
-                                {% elif item.avg_rating > 2 %}
-                                <span class="badge bg-warning rounded-pill">{{item.avg_rating}}</span>
-                                {% else %}
-                                <span class="badge bg-danger rounded-pill">{{item.avg_rating}}</span>
-                                {% endif %}
-                            </div>
-                            <span class="badge bg-primary rounded-pill">Reviews: {{item.total_reviews}}</span>
-                        </li>
-                        {% endfor %}
-                    </ol>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <h2 class="text-center">Cheapest Locations</h2>
-                <div class="mx-auto">
-                    <ol class="list-group list-group-numbered">
-                        {% for item in avg_costs %}
-                        <li class="list-group-item d-flex justify-content-between align-items-start">
-                            <div class="ms-2 me-auto">
-                                <div class="fw-bold"><a
-                                        href="{{ url_for('reviews',data=item.location) }}">{{item.location|title}}</a>
-                                </div>
-                                <div class="d-flex">
-                                    Avg. Cost:
-                                    {% for i in range(1, 4) %}
-                                    <span class="d-flex">
-                                        {% if i <= item.avg_cost %} <span
-                                            class="d-flex justify-content-center align-items-center filled-currency ms-2"
-                                            id="currency-{{i}}">
-                                            <i class="fas fa-euro-sign"></i>
-                                    </span>
+                            {% for item in avg_ratings %}
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold"><a
+                                            href="{{ url_for('reviews',data=item.country) }}">{{item.country|title}}</a>
+                                    </div>
+                                    Avg. Rating:
+                                    {% if item.avg_rating >= 4 %}
+                                    <span
+                                        class="badge bg-success rounded-pill">{{item.avg_rating|round(1,'floor')}}</span>
+                                    {% elif item.avg_rating > 2 %}
+                                    <span
+                                        class="badge bg-warning rounded-pill">{{item.avg_rating|round(1,'floor')}}</span>
                                     {% else %}
                                     <span
-                                        class="d-flex justify-content-center align-items-center unfilled-currency ms-2"
-                                        id="currency-{{i}}">
-                                        <i class="fas fa-euro-sign"></i>
-                                    </span>
+                                        class="badge bg-danger rounded-pill">{{item.avg_rating|round(1,'floor')}}</span>
                                     {% endif %}
-                                    {% endfor %}
-                                    </span>
                                 </div>
+                                <span class="badge bg-primary rounded-pill">Reviews: {{item.total_reviews}}</span>
+                            </li>
+                            {% endfor %}
+                        </ol>
+                    </div>
+                </div>
 
-                            </div>
-                            <span class="badge bg-primary rounded-pill">Reviews: {{item.total_reviews}}</span>
-                        </li>
-                        {% endfor %}
-                    </ol>
+
+
+            </div>
+            <div class="carousel-item">
+                <div class="w-75 mx-auto">
+                    <h2 class="text-center">Best Locations for Food</h2>
+                    <div class="mx-auto">
+                        <ol class="list-group list-group-numbered">
+                            {% for item in avg_ratings_food %}
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold"><a
+                                            href="{{ url_for('reviews',data=item.location) }}">{{item.location|title}}</a>
+                                    </div>
+                                    Avg. Rating:
+                                    {% if item.avg_rating >= 4 %}
+                                    <span class="badge bg-success rounded-pill">{{item.avg_rating}}</span>
+                                    {% elif item.avg_rating > 2 %}
+                                    <span class="badge bg-warning rounded-pill">{{item.avg_rating}}</span>
+                                    {% else %}
+                                    <span class="badge bg-danger rounded-pill">{{item.avg_rating}}</span>
+                                    {% endif %}
+                                </div>
+                                <span class="badge bg-primary rounded-pill">Reviews: {{item.total_reviews}}</span>
+                            </li>
+                            {% endfor %}
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="w-75 mx-auto">
+                    <h2 class="text-center">Cheapest Locations</h2>
+                    <div class="mx-auto">
+                        <ol class="list-group list-group-numbered">
+                            {% for item in avg_costs %}
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold"><a
+                                            href="{{ url_for('reviews',data=item.location) }}">{{item.location|title}}</a>
+                                    </div>
+                                    <div class="d-flex">
+                                        Avg. Cost:
+                                        {% for i in range(1, 4) %}
+                                        <span class="d-flex">
+                                            {% if i <= item.avg_cost %} <span
+                                                class="d-flex justify-content-center align-items-center filled-currency ms-2"
+                                                id="currency-{{i}}">
+                                                <i class="fas fa-euro-sign"></i>
+                                        </span>
+                                        {% else %}
+                                        <span
+                                            class="d-flex justify-content-center align-items-center unfilled-currency ms-2"
+                                            id="currency-{{i}}">
+                                            <i class="fas fa-euro-sign"></i>
+                                        </span>
+                                        {% endif %}
+                                        {% endfor %}
+                                        </span>
+                                    </div>
+
+                                </div>
+                                <span class="badge bg-primary rounded-pill">Reviews: {{item.total_reviews}}</span>
+                            </li>
+                            {% endfor %}
+                        </ol>
+                    </div>
                 </div>
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
             data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="carousel-control-prev-icon bg-primary" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
         </button>
         <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
             data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="carousel-control-next-icon bg-primary" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button>
     </div>
+
+
 </div>
 
 
