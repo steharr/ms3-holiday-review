@@ -93,8 +93,16 @@ body {
     display: inline;
     background-color: #0469c2;
 }
-
-
+/* DELETE REVIEW MODAL */
+.delete-modal{
+    background-color: #EFEAE1;
+    border: .25rem solid #C2B6A1;
+}
+.delete-modal-header{
+    background-color: #F5F1ED;
+    border-left: .5rem solid #d9534f;
+    color: #d9534f;
+}
 
 
 
