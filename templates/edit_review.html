@@ -111,13 +111,13 @@
                     <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
                         {% for pro in pros %}
                         {% if pro.name in review.holiday_pros %}
-                        <input type="checkbox" id="{{pro.name}}-2" class="btn-check" name="holiday_pros"
+                        <input type="checkbox" id="{{pro.name}}-1" class="btn-check" name="holiday_pros"
                             value="{{pro.name}}" autocomplete="off" checked>
-                        <label class="btn btn-outline-primary" for="{{pro.name}}-2">{{pro.name|title}}</label>
+                        <label class="btn btn-outline-primary" for="{{pro.name}}-1">{{pro.name|title}}</label>
                         {% else %}
-                        <input type="checkbox" id="{{pro.name}}-2" class="btn-check" name="holiday_pros"
+                        <input type="checkbox" id="{{pro.name}}-1" class="btn-check" name="holiday_pros"
                             value="{{pro.name}}" autocomplete="off">
-                        <label class="btn btn-outline-primary" for="{{pro.name}}-2">{{pro.name|title}}</label>
+                        <label class="btn btn-outline-primary" for="{{pro.name}}-1">{{pro.name|title}}</label>
                         {% endif %}
                         {% endfor %}
                     </div>
