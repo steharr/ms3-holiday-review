@@ -99,7 +99,53 @@ body {
     border: .125rem solid #ebebeb;
     color: #c2c2c2;
 }
+.filled-currency-small{
+    border-radius: 50%;
+    height: 1.5rem;
+    width: 1.5rem;
+    background-color: #f5b505;
+    border: .125rem solid #ffd86e;
+    color: #8a6501;
+    font-size: .75rem;
+}
+.unfilled-currency-small{
+    border-radius: 50%;
+    height: 1.5rem;
+    width: 1.5rem;
+    background-color: #e6e6e6;
+    border: .125rem solid #ebebeb;
+    color: #c2c2c2;
+    font-size: .75rem;
+}
 
+/* CHARTS PAGE */
+.charts-container{
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+.chart-button-container{
+    height: 4rem;
+}
+.chart-title{
+    height: 4rem;  
+}
+.charts-panel{
+    height: 47rem;
+    background-color: #FFEE93;
+    border-radius: 1rem;
+    box-shadow: .125rem .125rem .5rem;
+}
+.charts-panel-info{
+    height: 4rem;
+    background-color: #FFE75C;
+    border-radius: 1rem;
+    box-shadow: .125rem .125rem .5rem;
+}
+.btn-charts{
+    border-radius: 50%;
+    height: 2.5rem;
+    width: 2.5rem;
+}
 
 /* sticky footer with flexbox */
 /* copied from: https://css-tricks.com/couple-takes-sticky-footer/ */
