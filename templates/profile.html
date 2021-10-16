@@ -15,40 +15,48 @@
         {% endif %}
         {% endwith %}
     </div>
-    <div class="col-12 col-md-5 black-outline text-center">
-        <!-- PROFILE STATS -->
-        <h2 class="mb-3">{{user.username}}'s Profile</h2>
-        <div class="row justify-content-around align-items-center">
-            <div class="col-12 col-lg-6">
-                <!-- profile image provided via dicebears avatars HTTP-API: https://avatars.dicebear.com/ -->
-                <img class="img-profile black-outline"
-                    src="https://avatars.dicebear.com/api/avataaars/{{ user.username }}.svg" alt="user profile image">
+</div>
+<div class="row justify-content-start align-items-start">
+    <div class="col-12 col-md-6">
+        <div class="row justify-content-center panel-site text-center me-1">
+            <!-- PROFILE STATS -->
+            <div class="col-12 my-3">
+                <h2 class="profile-header px-2">{{user.username}}'s Profile</h2>
             </div>
-            <div class="col-12 col-lg-6">
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">
-                        Member since: {{ user.date_registered }}
-                    </li>
-                    <li class="list-group-item">
-                        Number of reviews: {{ reviews|length }}
-                    </li>
-                    <li class="list-group-item">
-                        Traveller type: {{ traveller_type.title() }}
-                    </li>
-                </ul>
+
+            <div class="col-12 row w-100">
+                <div class="px-0 mb-4 mb-lg-0 col-12 col-lg-5">
+                    <!-- profile image provided via dicebears avatars HTTP-API: https://avatars.dicebear.com/ -->
+                    <img class="img-profile" src="https://avatars.dicebear.com/api/avataaars/{{ user.username }}.svg"
+                        alt="user profile image">
+                </div>
+                <div class="my-auto pe-0 col-12 col-lg-7">
+                    <ul class="list-group">
+                        <li class="profile-list list-group-item">
+                            Member since: {{ user.date_registered }}
+                        </li>
+                        <li class="profile-list list-group-item">
+                            Number of reviews: {{ reviews|length }}
+                        </li>
+                        <li class="profile-list list-group-item">
+                            Traveller type: {{ traveller_type.title() }}
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <!-- review buttons -->
-        <div class="d-flex justify-content-center">
-            {% if session.user == user.username %}
-            <a class="btn btn-primary my-2 me-2" href="{{ url_for('write_review') }}">Write New Review</a>
-            {% endif %}
-            <a class="btn btn-primary my-2" href="{{ url_for('charts') }}">Go To Charts</a>
+            <!-- review buttons -->
+            <div class="d-flex justify-content-center">
+                {% if session.user == user.username %}
+                <a class="btn btn-primary my-2 me-2" href="{{ url_for('write_review') }}">Write New Review</a>
+                {% endif %}
+                <a class="btn btn-primary my-2" href="{{ url_for('charts') }}">View Charts</a>
+            </div>
         </div>
     </div>
+
     <!-- USER REVIEWS -->
-    <div class="col-12 col-md-7">
-        <h2 class="mb-3 text-center">{{user.username}}'s Reviews</h2>
+    <div class="col-12 col-md-6 black-outline">
+        <h2 class="my-3 text-center">{{user.username}}'s Reviews</h2>
         {% if reviews|length == 0 %}
         <p class="text-center">No reviews to show</p>
         {% else %}

@@ -39,10 +39,25 @@ body {
 /* PROFILE */
 .img-profile{
     width:12rem;
+    background-color:#fff;
+    border: .2rem solid #544F4F;
 }
 .img-profile-small{
     width:5rem;
+    background-color:#fff;
 }
+.profile-header{
+    display: inline;
+    background-color: #A99985;
+    color: #fff;
+    border: .25rem solid #C2B6A1;
+}
+.profile-list{
+    background-color: #F5F1ED;
+    border-left: .5rem solid #544F4F;
+    margin-bottom: .25rem;
+}
+
 
 .black-outline{
     border: 1px solid black;
@@ -159,7 +174,6 @@ body {
     width: 2rem;
     background-color: #252323;
 }
-
 /* sticky footer with flexbox */
 /* copied from: https://css-tricks.com/couple-takes-sticky-footer/ */
 html, body{
