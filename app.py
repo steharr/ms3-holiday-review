@@ -142,8 +142,8 @@ def edit_review(review_id):
     if request.method == "POST":
         submit = {
             "username": session["user"],
-            "country": request.form.get("country"),
-            "location": request.form.get("location"),
+            "country": request.form.get("country").lower(),
+            "location": request.form.get("location").lower(),
             "holiday_type": request.form.get("holiday_type"),
             "holiday_pros": request.form.getlist("holiday_pros"),
             "holiday_cons": request.form.getlist("holiday_cons"),
