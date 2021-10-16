@@ -21,8 +21,14 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid">
+            {% if session.user %}
+            <a class="navbar-brand fw-bold" href="{{ url_for('profile',username=session.user) }}"><i
+                    class="fas fa-globe-europe"></i>
+                HolidayHub</a>
+            {% else %}
             <a class="navbar-brand fw-bold" href="{{ url_for('landing') }}"><i class="fas fa-globe-europe"></i>
                 HolidayHub</a>
+            {% endif %}
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
