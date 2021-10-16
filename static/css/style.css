@@ -43,8 +43,9 @@ body {
     border: .2rem solid #544F4F;
 }
 .img-profile-small{
-    width:5rem;
+    width:4rem;
     background-color:#fff;
+    border: .125rem solid #544F4F;
 }
 .profile-header{
     display: inline;
@@ -64,6 +65,11 @@ body {
 }
 .review-title{
     font-size:1.1rem;
+}
+.review-user{
+    padding: .5rem;
+    background-color: #F5F1ED;
+    border-radius: .5rem;
 }
 .season-summer{
     border-radius: .5rem;

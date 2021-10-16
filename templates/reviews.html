@@ -14,19 +14,21 @@
         {% endif %}
         {% endwith %}
     </div>
-    <div class="d-flex justify-content-center col-12 black-outline">
+    <div class="d-flex justify-content-center col-12 mb-5">
         <!-- USER REVIEWS -->
-        <div class="col-md-10">
-            <h2 class="mb-3 text-center">Reviews for: <strong>{{data|title}}</strong></h2>
+        <div class="col-md-10 panel-site px-2">
+            <div class="d-flex justify-content-center my-3">
+                <h2 class="profile-header px-2 text-center">Reviews for: <strong>{{data|title}}</strong></h2>
+            </div>
             {% if reviews|length == 0 %}
             <p class="text-center">No reviews to show</p>
             {% else %}
             {% for review in reviews %}
-            <div class="card w-100 mb-4">
-                <div class="card-body">
-                    <div class="row black-outline mb-2">
-                        <div class="col-12 d-flex align-items-center">
-                            <h5 class="card-title">
+            <div class="card mb-4 p-1">
+                <div class="card-body p-0">
+                    <div class="review-header-panel ps-2 pe-1 mb-2">
+                        <div class="col-12 d-flex align-items-center p-0">
+                            <h5 class="review-title card-title text-truncate">
                                 <strong>{{review.location.title()}}, {{review.country.title()}}</strong>
                             </h5>
                             <div class="d-flex ms-auto">
@@ -40,34 +42,34 @@
                     </div>
 
                     <!-- review details -->
-                    <ul class="list-group list-group-flush">
+                    <ul class="list-group list-group-flush px-4">
                         <li class="list-group-item">
-                            <div class="d-flex align-items-center mb-2">
-                                <a href="{{ url_for('profile', username=review.username) }}">
+                            <div class="review-user d-flex align-items-center mb-4">
+                                <a class="text-decoration-none"
+                                    href="{{ url_for('profile', username=review.username) }}">
                                     {% if review.username == session.user %}
-                                    Review By: <strong class="ms-1 text-success">{{review.username}}</strong>
+                                    Review By:
+                                    <strong>{{review.username}}</strong>
                                     {% else %}
                                     Review By: {{review.username}}
                                     {% endif %}
                                 </a>
-                                <img class="img-profile-small black-outline ms-auto"
+                                <img class="img-profile-small ms-auto"
                                     src="https://avatars.dicebear.com/api/avataaars/{{ review.username }}.svg"
                                     alt="user profile image">
-
                             </div>
                             <div>
-                                Time visited: {{review.time_visited|title}}
+                                Time visited: <span
+                                    class="season-{{review.time_visited}}"><strong>{{review.time_visited|title}}</strong></span>
                             </div>
                         </li>
                         <li class="list-group-item">
                             <p><q>{{ review.comment }}</q></p>
                         </li>
                     </ul>
-
                     <!-- review buttons -->
                     <div class="d-flex justify-content-end">
                         <a class="btn btn-primary" href="{{ url_for('read_review', review_id=review._id) }}">Read</a>
-
                         {% if review.username == session.user %}
                         <a class="btn btn-secondary ms-2"
                             href="{{ url_for('edit_review', review_id=review._id) }}">Edit</a>
@@ -94,7 +96,7 @@
             <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog">
-                    <div class="modal-content">
+                    <div class="delete-modal modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">Warning</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -104,7 +106,6 @@
                         </div>
                         <div class="modal-footer">
                             <a class="btn btn-danger ms-2" id="deleteModalButton">Delete Review</a>
-                            <a class="btn btn-primary" id="readModalButton">Read Review</a>
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         </div>
                     </div>
