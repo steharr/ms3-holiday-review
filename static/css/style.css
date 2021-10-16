@@ -1,36 +1,42 @@
 body {
-    background-color: #FCF5C7;
+    background-color: #F5F1ED;
 }
+/* SITE NAVBAR */
 .navbar{
     font-size: 1rem;
-    background-color: #FFD799;
+    background-color: #DAD2BC;
 }
 .navbar-brand{
     font-size: 1.5rem;
 }
+/* LANDING PAGE */
 .panel-site{
-    background-color: #FFEE93;
-    border-radius: 1rem;
-    box-shadow: .125rem .125rem .5rem;
+    background-color: #DAD2BC;
+
 }
 .panel-inner{
-    background-color: #FFE75C;
-    border: .05rem solid #000;
-    border-radius: 1rem;
+    background-color: #A99985;
+    color: #fff;
+    border: .5rem solid #C2B6A1;
     text-align: center;
 }
+/* FOOTER */
 .footer{
-    background-color: #FFC09F;
+    background-color: #C2B6A1;
 }
 .panel-socials{
     display: inline-block;
-    height: 3rem;
+    height: 4rem;
     width: 8rem;
 }
 .socials{
-    color: #8AC2D0;
+    color: #EFEAE1;
     font-size: 2rem;
 }
+.socials:hover{
+    color: #fff;
+}
+/* PROFILE */
 .img-profile{
     width:12rem;
 }
@@ -130,16 +136,13 @@ body {
     height: 4rem;  
 }
 .charts-panel{
-    height: 47rem;
-    background-color: #FFEE93;
-    border-radius: 1rem;
-    box-shadow: .125rem .125rem .5rem;
+    height: 49rem;
+    background-color: #E8E2D5;
 }
 .charts-panel-info{
     height: 4rem;
-    background-color: #FFE75C;
-    border-radius: 1rem;
-    box-shadow: .125rem .125rem .5rem;
+    background-color: #B3B5BD;
+
 }
 .btn-charts{
     border-radius: 50%;
