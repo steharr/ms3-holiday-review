@@ -16,14 +16,13 @@
         {% endwith %}
     </div>
 </div>
-<div class="row justify-content-start align-items-start">
+<div class="row justify-content-start align-items-start mb-5">
     <div class="col-12 col-md-6">
-        <div class="row justify-content-center panel-site text-center me-1">
+        <div class="row justify-content-center panel-site text-center mb-4 me-lg-1">
             <!-- PROFILE STATS -->
             <div class="col-12 my-3">
                 <h2 class="profile-header px-2">{{user.username}}'s Profile</h2>
             </div>
-
             <div class="col-12 row w-100">
                 <div class="px-0 mb-4 mb-lg-0 col-12 col-lg-5">
                     <!-- profile image provided via dicebears avatars HTTP-API: https://avatars.dicebear.com/ -->
@@ -53,19 +52,20 @@
             </div>
         </div>
     </div>
-
     <!-- USER REVIEWS -->
-    <div class="col-12 col-md-6 black-outline">
-        <h2 class="my-3 text-center">{{user.username}}'s Reviews</h2>
+    <div class="col-12 col-md-6 panel-site px-2">
+        <div class="d-flex justify-content-center my-3">
+            <h2 class="profile-header px-2 text-center">{{user.username}}'s Reviews</h2>
+        </div>
         {% if reviews|length == 0 %}
         <p class="text-center">No reviews to show</p>
         {% else %}
         {% for review in reviews %}
-        <div class="card w-100 mb-4">
-            <div class="card-body">
-                <div class="row black-outline mb-2">
-                    <div class="col-12 d-flex align-items-center">
-                        <h5 class="card-title">
+        <div class="card mb-4 p-1">
+            <div class="card-body p-0">
+                <div class="review-header-panel ps-2 pe-1 mb-2">
+                    <div class="col-12 d-flex align-items-center p-0">
+                        <h5 class="review-title card-title text-truncate">
                             <strong>{{review.location.title()}}, {{review.country.title()}}</strong>
                         </h5>
                         <div class="d-flex ms-auto">
@@ -77,22 +77,19 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- review details -->
-                <ul class="list-group list-group-flush">
+                <ul class="list-group list-group-flush px-4">
                     <li class="list-group-item">
-                        Time visited: {{review.time_visited|title}}
+                        Time visited: <span
+                            class="season-{{review.time_visited}}"><strong>{{review.time_visited|title}}</strong></span>
                     </li>
                     <li class="list-group-item">
                         <p><q>{{ review.comment }}</q></p>
                     </li>
                 </ul>
-
-                <!-- review buttons -->
                 <!-- review buttons -->
                 <div class="d-flex justify-content-end">
                     <a class="btn btn-primary" href="{{ url_for('read_review', review_id=review._id) }}">Read</a>
-
                     {% if review.username == session.user %}
                     <a class="btn btn-secondary ms-2" href="{{ url_for('edit_review', review_id=review._id) }}">Edit</a>
                     <button type="button" data-review-id="{{review._id}}" class="btn btn-danger ms-2"
@@ -106,8 +103,6 @@
         </div>
         {% endfor %}
         {% endif %}
-
-
         <!-- delete review modal -->
         <!-- Modal -->
         <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -129,7 +124,6 @@
             </div>
         </div>
     </div>
-
 </div>
 
 

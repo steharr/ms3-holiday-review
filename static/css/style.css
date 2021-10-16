@@ -57,6 +57,50 @@ body {
     border-left: .5rem solid #544F4F;
     margin-bottom: .25rem;
 }
+/* PROFILE REVIEWS */
+.review-header-panel{
+    background-color: #F5F1ED;
+    border-left: .5rem solid #544F4F;
+}
+.review-title{
+    font-size:1.1rem;
+}
+.season-summer{
+    border-radius: .5rem;
+    padding: 0 .5rem;
+    color:#000;
+    display: inline;
+    background-color: #f2db07;
+}
+.season-spring{
+    border-radius: .5rem;
+    padding: 0 .5rem;
+    color:#fff;
+    display: inline;
+    background-color: #29a105;
+}
+.season-autumn{
+    border-radius: .5rem;
+    padding: 0 .5rem;
+    color:#fff;
+    display: inline;
+    background-color: #c26004;
+}
+.season-winter{
+    border-radius: .5rem;
+    padding: 0 .5rem;
+    color:#fff;
+    display: inline;
+    background-color: #0469c2;
+}
+
+
+
+
+
+
+
+
 
 
 .black-outline{
