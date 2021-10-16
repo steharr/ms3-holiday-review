@@ -99,7 +99,8 @@
                         Pros:
                     </div>
                     <!-- button group -->
-                    <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                    <div class="d-flex flex-column d-md-block btn-group" role="group"
+                        aria-label="Basic checkbox toggle button group">
                         {% for pro in pros %}
                         <input type="checkbox" id="{{pro.name}}-1" class="btn-check" name="holiday_pros"
                             value="{{pro.name}}" autocomplete="off">
@@ -113,7 +114,8 @@
                         Cons:
                     </div>
                     <!-- button group -->
-                    <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                    <div class="d-flex flex-column d-md-block btn-group" role="group"
+                        aria-label="Basic checkbox toggle button group">
                         {% for con in cons %}
                         <input type="checkbox" id="{{con.name}}-2" class="btn-check" name="holiday_cons"
                             value="{{con.name}}" autocomplete="off">
