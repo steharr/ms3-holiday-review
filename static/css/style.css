@@ -133,21 +133,31 @@ body {
     height: 4rem;
 }
 .chart-title{
-    height: 4rem;  
+    display: inline-block;
+    width: 75%;
+    height: 5rem;
+    background-color: #A99985;
+    color: #fff;
+    border: .25rem solid #C2B6A1;
 }
 .charts-panel{
-    height: 49rem;
+    height: 52rem;
     background-color: #E8E2D5;
 }
 .charts-panel-info{
     height: 4rem;
     background-color: #B3B5BD;
-
+}
+.charts-list{
+    background-color: #F5F1ED;
+    border-left: 1rem solid #544F4F;
+    margin-bottom: .25rem;
 }
 .btn-charts{
     border-radius: 50%;
-    height: 2.5rem;
-    width: 2.5rem;
+    height: 2rem;
+    width: 2rem;
+    background-color: #252323;
 }
 
 /* sticky footer with flexbox */
