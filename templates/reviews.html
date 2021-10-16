@@ -28,7 +28,7 @@
                 <div class="card-body p-0">
                     <div class="review-header-panel ps-2 pe-1 mb-2">
                         <div class="col-12 d-flex align-items-center p-0">
-                            <h5 class="review-title card-title text-truncate">
+                            <h5 class="review-title card-title text-truncate m-0">
                                 <strong>{{review.location.title()}}, {{review.country.title()}}</strong>
                             </h5>
                             <div class="d-flex ms-auto">
@@ -40,7 +40,6 @@
                             </div>
                         </div>
                     </div>
-
                     <!-- review details -->
                     <ul class="list-group list-group-flush px-4">
                         <li class="list-group-item">
@@ -97,8 +96,9 @@
                 aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="delete-modal modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Warning</h5>
+                        <div class="delete-modal-header modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel"><strong>Warning <i
+                                        class="fas fa-exclamation-triangle"></i></strong></h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">

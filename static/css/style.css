@@ -65,6 +65,8 @@ body {
 }
 .review-title{
     font-size:1.1rem;
+    height:2rem;
+    line-height: 2rem;
 }
 .review-user{
     padding: .5rem;
