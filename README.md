@@ -19,11 +19,16 @@ As a user viewing this site,
 7. I want to edit a review on HolidayHub
 8. I want to delete a review on HolidayHub
 9. I want to see other users reviews on HolidayHub
-10. I want to see other users reviews by location on HolidayHub
-11. I want to see the best locations by holiday type on HolidayHub
-12. I want to see the cheapest rated locations on HolidayHub
-13. I want to see the best rated locations on HolidayHub
-14. I want the process of writing a review to be simple and intuitive
-15. I want the process of reading another users' review to be interesting and visually appealling
-16. I want to view another person's profile on HolidayHub
+10. I want to see other users reviews by country on HolidayHub
+11. I want to see other users reviews by location on HolidayHub
+12. I want to see the best locations by holiday type on HolidayHub
+13. I want to see the cheapest rated locations on HolidayHub
+14. I want to see the best rated countries on HolidayHub
+15. I want the process of writing a review to be simple and intuitive
+16. I want the process of reading another users' review to be interesting and visually appealling
+17. I want to view another person's profile on HolidayHub
+
+As the business owner of this site,
+1. I want to provide unbiased, user driven travel advice
+2. I want to earn money by providing links to affiliate holiday booking sites. Users should have the ability to quickly go to an affiliate sites to book holidays while viewing other users reviews.  
 

@@ -1,6 +1,25 @@
 body {
     background-color: #F5F1ED;
 }
+/* AFFILIATE */
+.btn-affiliate{
+    height: 2rem;
+    width: 14rem;
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    justify-content: center;
+    background-color: #ff7700;
+    color: #fff;
+}
+.affiliate-logo{
+    width: 6rem;
+    padding-bottom: .25rem;
+}
+.btn-affiliate:hover{
+    background-color: #d66400;
+    color: #fff
+}
 /* SITE NAVBAR */
 .navbar{
     font-size: 1rem;

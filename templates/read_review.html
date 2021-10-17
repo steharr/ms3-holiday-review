@@ -1,14 +1,22 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="row justify-content-center align-items-center">
+<div class="row justify-content-center align-items-center mb-4">
     <div class="row col-lg-8 d-inline-flex panel-site justify-content-center mt-5 mb-5 mb-md-0">
         <div class="text-center">
-            <div class="my-3">
-                <h2 class="read-review-header px-2 text-center"> {{ review.location|title}},{{ review.country|title}}
+            <div class="d-flex flex-column my-3">
+                <h2 class="mx-auto read-review-header px-2 text-center"> {{ review.location|title}},{{
+                    review.country|title}}
                     Review
                     </strong></h2>
                 <p class="my-2 text-muted fs-4">By {{ review.username }} on {{ review.date_reviewed }}</p>
+                <div class="mx-auto">
+                    <a class="ms-2 btn btn-affiliate" href="https://www.holidaybook.com/?search={{review.location}}">
+                        Book {{ review.location|title }} on
+                        <img class="ms-1 affiliate-logo" src="../static/images/fake-affiliate-logo.png"
+                            alt="link to book holiday on affiliate site">
+                    </a>
+                </div>
             </div>
             <div>
                 <!-- review dates information -->
@@ -80,7 +88,7 @@
                 </div>
 
                 <!-- review buttons -->
-                <div class="d-flex my-4 justify-content-center">
+                <div class="d-flex my-4 justify-content-center align-items-center">
                     {% if "profile" in prev_url %}
                     <a class="btn btn-primary" href="{{url_for('profile', username=review.username)}}">
                         Go Back to Profile
@@ -90,7 +98,10 @@
                         Go Back to Charts
                     </a>
                     {% endif %}
+
+
                 </div>
+
             </div>
         </div>
     </div>
