@@ -103,7 +103,7 @@
                         aria-label="Basic checkbox toggle button group">
                         {% for pro in pros %}
                         <input type="checkbox" id="{{pro.name}}-1" class="btn-check" name="holiday_pros"
-                            value="{{pro.name}}" autocomplete="off">
+                            value="{{pro.name}}">
                         <label class="btn btn-outline-primary" for="{{pro.name}}-1">{{pro.name|title}}</label>
                         {% endfor %}
                     </div>
@@ -118,7 +118,7 @@
                         aria-label="Basic checkbox toggle button group">
                         {% for con in cons %}
                         <input type="checkbox" id="{{con.name}}-2" class="btn-check" name="holiday_cons"
-                            value="{{con.name}}" autocomplete="off">
+                            value="{{con.name}}">
                         <label class="btn btn-outline-primary" for="{{con.name}}-2">{{con.name|title}}</label>
                         {% endfor %}
                     </div>
@@ -130,7 +130,7 @@
                     <label class="mb-3" for="cost">
                         Cost Rating
                     </label>
-                    <div class="d-flex justify-content-center" id="cost-rating-display">
+                    <div class="d-flex justify-content-center">
                         <span class="d-flex justify-content-center align-items-center filled-currency ms-2"
                             id="currency-1">
                             <i class="fas fa-euro-sign"></i>
@@ -145,7 +145,7 @@
                         </span>
                     </div>
                     <input type="range" class="form-range w-50 mx-auto" name="cost" min="1" max="3" value="1"
-                        onchange="highlightIcon(this.value,'currency', 3)" step="1" id="cost" pattern=[1-3] required>
+                        onchange="highlightIcon(this.value,'currency', 3)" step="1" id="cost">
                 </div>
                 <!-- review rating -->
                 <div class="row flex-column my-2 p-2 panel-review-info grey-outline rounded-edges">
@@ -153,7 +153,7 @@
                     <label for="rating">
                         Review Rating
                     </label>
-                    <div class="d-flex justify-content-center" id="cost-rating-display">
+                    <div class="d-flex justify-content-center">
                         <span class="d-flex justify-content-center align-items-center filled-star ms-2" id="star-1">
                             <i class="fas fa-star"></i>
                         </span>
