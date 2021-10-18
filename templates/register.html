@@ -39,9 +39,10 @@
             <form class="needs-validation" novalidate method="POST" action="{{ url_for('register') }}">
                 <!-- username -->
                 <div class="mb-3">
-                    <label for="username" class="form-label">Choose your Username:</label>
-                    <input type="text" name="username" class="form-control" id="username" aria-describedby="username"
-                        minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" required>
+                    <label id="usernameHelp" for="username" class="form-label">Choose your Username:</label>
+                    <input type="text" name="username" class="form-control" id="username"
+                        aria-describedby="usernameHelp" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$"
+                        required>
                     <div class="invalid-feedback">
                         Please choose a valid username!
                     </div>
