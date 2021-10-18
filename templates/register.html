@@ -40,9 +40,8 @@
                 <!-- username -->
                 <div class="mb-3">
                     <label for="username" class="form-label">Choose your Username:</label>
-                    <input type="text" name="username" class="form-control" id="username"
-                        aria-describedby="usernameHelp" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$"
-                        required>
+                    <input type="text" name="username" class="form-control" id="username" aria-describedby="username"
+                        minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" required>
                     <div class="invalid-feedback">
                         Please choose a valid username!
                     </div>
@@ -59,8 +58,8 @@
                 <!-- holiday type selection -->
                 <div class="mb-3">
                     <label for="holiday" class="form-label">What type of holidays do you like?</label>
-                    <select class="form-select" type="holiday" name="holiday" id="holiday"
-                        aria-label="Default select example" required>
+                    <select class="form-select" name="holiday" id="holiday" aria-label="Default select example"
+                        required>
                         <option selected value="" disabled="disabled">Choose one...</option>
                         {% for type in holiday_type %}
                         <option value="{{ type.holiday_type }}">{{ type.holiday_type.capitalize() }}</option>
