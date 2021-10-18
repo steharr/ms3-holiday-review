@@ -8,7 +8,7 @@
                 <h2 class="mx-auto read-review-header px-2 text-center"> {{ review.location|title}},{{
                     review.country|title}}
                     Review
-                    </strong></h2>
+                </h2>
                 <p class="my-2 text-muted fs-4">By {{ review.username }} on {{ review.date_reviewed }}</p>
                 <div class="mx-auto">
                     <a class="ms-2 btn btn-affiliate" href="https://www.holidaybook.com/?search={{review.location}}">
@@ -98,13 +98,12 @@
                         Go Back to Charts
                     </a>
                     {% endif %}
-
-
                 </div>
 
             </div>
         </div>
     </div>
 
+</div>
 
-    {% endblock %}
+{% endblock %}
