@@ -43,7 +43,8 @@ def register():
         # insert in db if not already existing
         new_user = {
             "username": request.form.get("username").lower(),
-            "password": generate_password_hash(request.form.get("password").lower()),
+            "password": generate_password_hash(
+                request.form.get("password").lower()),
             "holiday_type": request.form.get("holiday").lower(),
             "date_registered": date.today().strftime("%d/%m/%Y")
         }
@@ -66,7 +67,8 @@ def login():
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
         # check if the hashed password matches the password on the database
-        if check_password_hash(existing_user["password"], request.form.get("password")):
+        if check_password_hash(
+                existing_user["password"], request.form.get("password")):
             # set the current sessions user
             session["user"] = request.form.get("username").lower()
             # flash indication
@@ -99,13 +101,16 @@ def profile(username):
     holiday_type = mongo.db.holiday_type.find_one(
         {'holiday_type': user['holiday_type']})
 
-    return render_template("profile.html", user=user, reviews=user_reviews, traveller_type=holiday_type['traveller_type'])
+    return render_template(
+        "profile.html", user=user, reviews=user_reviews,
+        traveller_type=holiday_type['traveller_type'])
 
 
 @app.route("/read_review/<review_id>")
 def read_review(review_id):
     review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
-    return render_template("read_review.html", review=review, prev_url=session['url'])
+    return render_template(
+        "read_review.html", review=review, prev_url=session['url'])
 
 
 @app.route("/write_review", methods=["GET", "POST"])
@@ -133,7 +138,9 @@ def write_review():
     holiday_type = mongo.db.holiday_type.find()
     pros = list(mongo.db.pros.find())
     cons = list(mongo.db.cons.find())
-    return render_template("write_review.html", holiday_type=holiday_type, cons=cons, pros=pros, curr_date=curr_date)
+    return render_template(
+        "write_review.html", holiday_type=holiday_type, cons=cons,
+        pros=pros, curr_date=curr_date)
 
 
 @app.route("/edit_review/<review_id>", methods=["GET", "POST"])
@@ -162,7 +169,10 @@ def edit_review(review_id):
     holiday_type = mongo.db.holiday_type.find()
     pros = list(mongo.db.pros.find())
     cons = list(mongo.db.cons.find())
-    return render_template("edit_review.html", review=review, seasons=seasons, holiday_type=holiday_type, cons=cons, pros=pros, prev_url=session['url'])
+    return render_template(
+        "edit_review.html", review=review, seasons=seasons,
+        holiday_type=holiday_type, cons=cons, pros=pros,
+        prev_url=session['url'])
 
 
 @app.route("/delete_review/<review_id>")
@@ -203,7 +213,9 @@ def charts():
     avg_ratings = avg_ratings[:10]
     avg_ratings_food = avg_ratings_food[:10]
 
-    return render_template("charts.html", avg_ratings=avg_ratings, avg_ratings_food=avg_ratings_food, avg_costs=avg_costs)
+    return render_template(
+        "charts.html", avg_ratings=avg_ratings,
+        avg_ratings_food=avg_ratings_food, avg_costs=avg_costs)
 
 
 @app.route("/reviews/<data>")
@@ -254,13 +266,15 @@ def avg_cost_rating_per_location(locations, reviews):
     # init dict for storing avg_ratings per country
     avg_ratings = []
 
-    # start loop to cycle through every possible location that has been reviewed
+    # start loop to cycle through
+    # every possible location that has been reviewed
     for location in locations:
         location_rating = {}
         location_count = 0
         costs = []
 
-        # find all reviews which have the location being checked and also have food as a pro
+        # find all reviews which have
+        # the location being checked and also have food as a pro
         for review in reviews:
             if review['location'].lower() == location:
                 costs.append(review['cost'])
@@ -281,15 +295,18 @@ def avg_ratings_per_location_with_food(locations, reviews):
     # init dict for storing avg_ratings per country
     avg_ratings = []
 
-    # start loop to cycle through every possible location that has been reviewed
+    # start loop to cycle through
+    # every possible location that has been reviewed
     for location in locations:
         location_rating = {}
         location_count = 0
         ratings = []
 
-        # find all reviews which have the location being checked and also have food as a pro
+        # find all reviews which
+        # have the location being checked and also have food as a pro
         for review in reviews:
-            if review['location'].lower() == location and "food" in review["holiday_pros"]:
+            rev_location = review['location'].lower()
+            if rev_location == location and "food" in review["holiday_pros"]:
                 ratings.append(review['rating'])
                 location_count += 1
 
