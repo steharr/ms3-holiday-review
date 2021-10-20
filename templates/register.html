@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="row vh-100 justify-content-around align-items-center">
+<div class="my-5 my-md-0 row vh-100 justify-content-around align-items-center">
 
     <div class="d-none d-lg-flex col-lg-8">
         <div
@@ -37,27 +37,27 @@
             <!-- register form -->
             <form class="needs-validation" novalidate method="POST" action="{{ url_for('register') }}">
                 <!-- username -->
-                <div class="mb-3">
+                <div class="mb-1 mb-md-3">
                     <label id="usernameHelp" for="username" class="form-label">Choose your Username:</label>
                     <input type="text" name="username" class="form-control panel-review-info grey-outline rounded-edges"
                         id="username" aria-describedby="usernameHelp" minlength="5" maxlength="15"
                         pattern="^[a-zA-Z0-9]{5,15}$" required>
                     <div class="invalid-feedback">
-                        Please choose a valid username!
+                        5 - 15 characters required with no symbols.
                     </div>
                 </div>
                 <!-- password -->
-                <div class="mb-3">
+                <div class="mb-1 mb-md-3">
                     <label for="password" class="form-label">Input your Password:</label>
                     <input type="password" name="password"
                         class="form-control panel-review-info grey-outline rounded-edges" id="password" minlength="5"
                         maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" required>
                     <div class="invalid-feedback">
-                        Please choose a valid password!
+                        5 - 15 characters required with no symbols.
                     </div>
                 </div>
                 <!-- holiday type selection -->
-                <div class="mb-3">
+                <div class="mb-2 mb-md-3">
                     <label for="holiday" class="form-label">What type of holidays do you like?</label>
                     <select class="form-select panel-review-info grey-outline rounded-edges" name="holiday" id="holiday"
                         aria-label="Default select example" required>
@@ -67,7 +67,7 @@
                         {% endfor %}
                     </select>
                     <div class="invalid-feedback">
-                        Please choose a valid option!
+                        A valid option must be chosen
                     </div>
                 </div>
                 <!-- submit button -->
