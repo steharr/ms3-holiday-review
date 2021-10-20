@@ -196,15 +196,21 @@ def charts():
     # calculate best rated countries
     avg_ratings = avg_ratings_per_country(countries, reviews)
     avg_ratings = sorted(avg_ratings, key=itemgetter(
+        'total_reviews'), reverse=True)
+    avg_ratings = sorted(avg_ratings, key=itemgetter(
         'avg_rating'), reverse=True)
 
     # calculate best locations for food
     avg_ratings_food = avg_ratings_per_location_with_food(locations, reviews)
     avg_ratings_food = sorted(avg_ratings_food, key=itemgetter(
+        'total_reviews'), reverse=True)
+    avg_ratings_food = sorted(avg_ratings_food, key=itemgetter(
         'avg_rating'), reverse=True)
 
     # calculate the cheapest locations
     avg_costs = avg_cost_rating_per_location(locations, reviews)
+    avg_costs = sorted(avg_costs, key=itemgetter(
+        'total_reviews'), reverse=True)
     avg_costs = sorted(avg_costs, key=itemgetter(
         'avg_cost'))
 
