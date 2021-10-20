@@ -363,7 +363,7 @@ def avg_ratings_per_country(countries, reviews):
 
 @app.errorhandler(404)
 def page_not_found(e):
-    # note that we set the 404 status explicitly
+    # taken from flask documentation: https://flask.palletsprojects.com/en/1.1.x/patterns/errorpages/
     return render_template('404.html'), 404
 
 
