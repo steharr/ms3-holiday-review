@@ -5,22 +5,21 @@
 
     <div class="d-none d-lg-flex col-lg-8">
         <div
-            class="d-flex flex-column justify-content-around align-items-center px-4 call-to-action black-outline mx-auto">
-            <h1 class="my-4">What you'll find at HolidayHub...</h1>
+            class="d-flex flex-column justify-content-around align-items-center px-4 call-to-action panel-site mx-auto">
+            <h1 class="my-4 panel-inner">What you'll find at HolidayHub...</h1>
             <div class="my-5">
                 <p class="reasons-to-register">
                     Unbiased, reliable reviews from an active userbase ...
                     <br>
                     Detailed, data driven suggestions for places to visit ...
                     <br>
-                    Intuitive user interface means you'll find that next holiday withing minutes!
+                    Intuitive user interface means you'll find that next holiday within minutes!
                 </p>
             </div>
         </div>
     </div>
     <div class="col-lg-4">
-        <div
-            class="d-flex flex-column justify-content-around align-items-center px-4 text-center black-outline mx-auto">
+        <div class="d-flex flex-column justify-content-around align-items-center px-4 text-center panel-site mx-auto">
             <i class="my-4 fas fa-globe-europe fs-1"></i>
             <h2>Let's get started</h2>
             <!-- flash messages -->
@@ -40,9 +39,9 @@
                 <!-- username -->
                 <div class="mb-3">
                     <label id="usernameHelp" for="username" class="form-label">Choose your Username:</label>
-                    <input type="text" name="username" class="form-control" id="username"
-                        aria-describedby="usernameHelp" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$"
-                        required>
+                    <input type="text" name="username" class="form-control panel-review-info grey-outline rounded-edges"
+                        id="username" aria-describedby="usernameHelp" minlength="5" maxlength="15"
+                        pattern="^[a-zA-Z0-9]{5,15}$" required>
                     <div class="invalid-feedback">
                         Please choose a valid username!
                     </div>
@@ -50,7 +49,8 @@
                 <!-- password -->
                 <div class="mb-3">
                     <label for="password" class="form-label">Input your Password:</label>
-                    <input type="password" name="password" class="form-control" id="password" minlength="5"
+                    <input type="password" name="password"
+                        class="form-control panel-review-info grey-outline rounded-edges" id="password" minlength="5"
                         maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" required>
                     <div class="invalid-feedback">
                         Please choose a valid password!
@@ -59,8 +59,8 @@
                 <!-- holiday type selection -->
                 <div class="mb-3">
                     <label for="holiday" class="form-label">What type of holidays do you like?</label>
-                    <select class="form-select" name="holiday" id="holiday" aria-label="Default select example"
-                        required>
+                    <select class="form-select panel-review-info grey-outline rounded-edges" name="holiday" id="holiday"
+                        aria-label="Default select example" required>
                         <option selected value="" disabled="disabled">Choose one...</option>
                         {% for type in holiday_type %}
                         <option value="{{ type.holiday_type }}">{{ type.holiday_type.capitalize() }}</option>
@@ -73,7 +73,7 @@
                 <!-- submit button -->
                 <button type="submit" class="btn btn-primary mb-3">Submit</button>
             </form>
-            <p>Already a member?<a href="{{ url_for('login') }}">log in here</a></p>
+            <p>Already a member?<a href="{{ url_for('login') }}">Log in here</a></p>
         </div>
     </div>
 
