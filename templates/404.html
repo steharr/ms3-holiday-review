@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="d-flex align-items-center vh-100">
+    <div
+        class="d-flex flex-column justify-content-around align-items-center h-50 px-4 call-to-action panel-site mx-auto">
+        <h1 class="p-4 delete-modal-header"> <i class="fas fa-exclamation-triangle"></i> <strong>Whoops! 404
+                error</strong>
+        </h1>
+        <h4 class="review-user">Looks like something went wrong</h4>
+        <a class="btn btn-primary mb-2" href="{{ url_for('register') }}">Get Back to Homepage</a>
+    </div>
+</div>
+
+{% endblock %}
