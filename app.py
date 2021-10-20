@@ -63,20 +63,31 @@ def register():
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
-        # check if the username is already registered in the database
-        existing_user = mongo.db.users.find_one(
-            {"username": request.form.get("username").lower()})
-        # check if the hashed password matches the password on the database
-        if check_password_hash(
-                existing_user["password"], request.form.get("password")):
-            # set the current sessions user
-            session["user"] = request.form.get("username").lower()
-            # flash indication
-            flash('Login Successful', category='success')
-            return redirect(url_for('profile', username=session["user"]))
-        else:
+        try:
+            # check if the username is already registered in the database
+            existing_user = mongo.db.users.find_one(
+                {"username": request.form.get("username").lower()})
+        except:
             # flash indication
             flash('Login Failed', category='danger')
+            return redirect(url_for('login'))
+
+        if existing_user:
+            # check if the hashed password matches the password on the database
+            if check_password_hash(
+                    existing_user["password"], request.form.get("password")):
+                # set the current sessions user
+                session["user"] = request.form.get("username").lower()
+                # flash indication
+                flash('Login Successful', category='success')
+                return redirect(url_for('profile', username=session["user"]))
+            else:
+                # flash indication
+                flash('Login Failed', category='danger')
+                return redirect(url_for('login'))
+        else:
+            # flash indication
+            flash('Username Not found!', category='danger')
             return redirect(url_for('login'))
 
     return render_template("login.html")
