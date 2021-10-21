@@ -164,8 +164,13 @@ For the skeleton plane, wireframes were completed for each page of the website. 
 ### **Surface Plane**
 
 <!-- aesthetics -->
-<!-- color palette -->
+**Color Palette**  
+To create the color scheme of the site, I used the color palette generator [Coolors.](https://coolors.co/) I wanted to focus on using colors which could be associated with going on holidays. A typical activity for a holiday goer is to go to the beach. Therefore I chose a color palette which has shades similar to the color of sand. I also planned to use the Bootstrap standard [button components](https://getbootstrap.com/docs/5.1/components/buttons/) in my site as these had very distinct, eye catching color schemes. Therefore I needed to have a neutral color palette for my site so that these buttons would pop on the screen. The sandy color pallette was neutral enough to achieve this goal.
 
+<img src="documents/surface/ms3-color-pallette.png" alt="site color palette" width="800"/> 
+
+**Font**  
+For the fonts of the site, I used the default Bootstrap font families of **Helvetica** and **Arial**. I found these fonts conveyed simplicity when they are being looked at. This was in line with my goals to design a simple, user friendly interface for site viewers. 
 ***
 
 ### **Features**
@@ -183,6 +188,8 @@ Code editor I used to write my code
 For markup
 * [CSS](https://en.wikipedia.org/wiki/CSS)  
 For styling the site
+* [Bootstrap](https://getbootstrap.com/)  
+Framework used to create and style components on the front end
 * [JavaScript](https://en.wikipedia.org/wiki/JavaScript)  
 For programming certain dynamic elements in the review section of the site
 * [Python](https://www.python.org/)  
@@ -207,13 +214,15 @@ Used to generate a favicon for the site
 Used to create wireframes
 * [dbdiagram](https://dbdiagram.io/home)  
 Used to create the database schema diagram for this readme
-
+* [Coolors](https://dbdiagram.io/home)  
 
 ***
 
-### **Testing***
+### **Testing**
+Please see **[TESTING.md](TESTING.md)** for details on the testing carried out for this project
 
-### **Version Control***
+
+### **Version Control**
 * To begin the project, I created a remote repository on Github by choosing the **New Repository** button and following the on screen steps.
 * I then created a local repository using Git:
    *  I created a directory on my computer called **MS3**
