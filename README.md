@@ -77,7 +77,7 @@ To plan out the scope of the site, I compiled a list of features that were neede
 
 <!-- planned technologies for use -->
 
-### **Structure Plane***
+### **Structure Plane**
 The structure plane was carried out in three steps: **Back End Design**, **Front End Design** & **Front End Relationships** 
 
 #### **Back End Design:**  
@@ -148,8 +148,8 @@ In order to plan out the development stages and ensure that the all user stories
 * Since it is a full stack application with a large scope, I decided I needed to use the **Boostrap** framework in order to speed up the front end development as much as possible.
 * I decided to focus primarily on **functionality over form**. If it was possible to achieve the user experience using a Bootstrap component with a minimal amount of customization, I would choose this over attempting to design the component from scratch. 
 
-### **Skeleton Plane***
-Wireframes were completed for each pages of the website. Shown below:
+### **Skeleton Plane**
+For the skeleton plane, wireframes were completed for each page of the website. Shown below:
 
 * [Landing](documents/wireframes/landing.png)
 * [Login](documents/wireframes/login.png)
@@ -161,12 +161,14 @@ Wireframes were completed for each pages of the website. Shown below:
 * [Charts](documents/wireframes/charts.png)
 * [Reviews](documents/wireframes/reviews.png)
 
-### **Surface Plane***
+### **Surface Plane**
 
 <!-- aesthetics -->
 <!-- color palette -->
 
-### **Features***
+***
+
+### **Features**
 
 #### Existing Features
 
@@ -174,7 +176,40 @@ Wireframes were completed for each pages of the website. Shown below:
 <!-- responsive profile types -->
 <!-- add new categories for admin user priveleges -->
 
-### **Technologies Used***
+### **Technologies Used**
+* [Visual Studio Code](https://code.visualstudio.com/)  
+Code editor I used to write my code
+* [HTML](https://en.wikipedia.org/wiki/HTML5)  
+For markup
+* [CSS](https://en.wikipedia.org/wiki/CSS)  
+For styling the site
+* [JavaScript](https://en.wikipedia.org/wiki/JavaScript)  
+For programming certain dynamic elements in the review section of the site
+* [Python](https://www.python.org/)  
+For programming the back end of the site
+* [Flask](https://flask.palletsprojects.com/en/2.0.x/)  
+Used as a web framework for the site
+* [MongoDB](https://www.mongodb.com/)  
+The database for the site
+* [Heroku](https://id.heroku.com/login)  
+Platform where the site is deployed
+* [Font Awesome](https://fontawesome.com/)  
+Used for icons throughout the site
+* [Git](https://git-scm.com/)  
+For version control
+* [GitHub](https://github.com/)  
+For storing my files and for hosting the site on Github Pages
+* [Canva](https://www.canva.com/)  
+I used a premium version of this tool to create the fake affiliate logo for the site
+* [favicon-generator.org](https://www.favicon-generator.org/)  
+Used to generate a favicon for the site
+* [Balsamiq](https://balsamiq.com/)  
+Used to create wireframes
+* [dbdiagram](https://dbdiagram.io/home)  
+Used to create the database schema diagram for this readme
+
+
+***
 
 ### **Testing***
 
