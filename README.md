@@ -75,17 +75,78 @@ To plan out the scope of the site, I compiled a list of features that were neede
 |Profile Globe|A map of the world in the users' profile with reviewed countries highlighted|5|
 |Admin User Privelages|Admin users have the ability to create their own charts, adjust categories that can be selected in reviews|5|
 
-
-
 <!-- planned technologies for use -->
 
 ### **Structure Plane***
+The structure plane was carried out in three steps: **Back End Design**, **Front End Design** & **Front End Relationships** 
 
-<!-- short intro to how structure was thought out -->
+#### **Back End Design:**  
+For the back end of the site there are 5 collections:
 
-### Database Design & Schema
+* **Users**  
+This collection stores details on the users chosen username and password. The username is stored as a string with lowercase characters.
+For security purposes, the password is stored as a hashed password string on the database using the [Werkzeug](https://werkzeug.palletsprojects.com/en/2.0.x/) library that is included with Flask. Hashing provides a one way transformation of the password so there is protection if someone who gains unauthorized access to the database. The collection also contains some user stats that are obtained when the user first registers. In total there are 4 keys for each document in this collection:  
+`username` - a string that contains the username of the user   
+`password` - a string that contains the hashed password of the user   
+`holiday_type` - a string that details what type of holiday the user has chosen as their favourite when registering    
+`date_registered` - a string which details the date the user created an account **(dd mmm yyyy format)**
 
-#### Site Structure
+* **Pros**  
+This collection holds all of the options available to the user to choose as a holiday pro when they are writing a review. There is 1 key for each document in this collection:  
+`name` - a string name of the holiday pro e.g. food
+
+* **Cons**  
+This collection holds all of the options available to the user to choose as a holiday con when they are writing a review. There is 1 key for each document in this collection:  
+`name` - a string name of the holiday con e.g. weather
+
+* **Holiday_Type**  
+This collection holds all of the traveller types that a user can be on the site. For each traveller type there is an associated holiday type. When a user firsts registers, they choose their favourite holiday type. Whenever they view their profile, the associated traveller type is displayed in their profile. There are 2 keys for each document in this collection:  
+`holiday_type` - a string that details what type of holiday the user has chosen as their favourite when registering. Also is chosen whenever a user is submitting a review  
+`traveller_type` - a string that details what type of traveller a user is based on what their chosen preferred holiday type is
+
+* **Reviews**  
+The reviews collection stores all information submitted in a review. There are 11 keys in this collection:  
+`username` - A string which details the user that submitted the review  
+`country` - A string which details the country being reviewed  
+`location` - A string which details the town/city being reviewed  
+`holiday_type` - A string which details the holiday type   
+`holiday_pros` - An array which stores all pros chosen in the review  
+`holiday_cons` - An array which stores all cons chosen in the review  
+`rating` - An integer between (1-5) which gives the review rating  
+`comment` - A string which details the town/city being reviewed  
+`cost`- An integer between (1-3) which gives the review cost rating  
+`time_visited` - A string which details the season which the town/city being reviewed was visited e.g. Summer
+`date_reviewed` - A string which details the date that the review was created **(dd mmm yyyy format)**  
+
+##### **Database Schema Diagram** 
+The overview of the database schema and how each collection is related is shown below  
+
+<img src="documents/database-design/db-schema.png" alt="site database schema" width="800"/> 
+
+#### **Front End Design:** 
+For the front end, I planned to create 10 html pages which extended from one base template.  
+<!-- #### Site Structure -->
+`index.html` - landing page for the site with a call to action encouraging viewers to register  
+`register.html` - register form for the user to set up an account   
+`login.html` - login form for the user to login to their account  
+`profile.html` - profile page for the user  
+`write_review.html` - form for the user to write a review    
+`read_review.html` - page which shows a created review      
+`edit_review.html` - form for the user to edit a review    
+`charts.html` - aggregated review data in the form of charts  
+`reviews.html` - a list of reviews per location or country    
+ 
+#### **Front and Back End Relationships:**
+The final planning for the structure plane involved creating a site plan which describes how the collections and the pages were connected and what were the navigation paths that the user could take through the site. This plan is shown below:
+
+<img src="documents/database-design/site-relationships.png" alt="site database schema" width="800"/> 
+
+#### **Final Key Design Decisions**
+In order to plan out the development stages and ensure that the all user stories were satisfied, I made some key design decisions early on:
+
+* The site is designed to be **mobile first**. This decision was made in order to ensure it was easily accessible for all potential users.
+* Since it is a full stack application with a large scope, I decided I needed to use the **Boostrap** framework in order to speed up the front end development as much as possible.
+* I decided to focus primarily on **functionality over form**. If it was possible to achieve the user experience using a Bootstrap component with a minimal amount of customization, I would choose this over attempting to design the component from scratch. 
 
 ### **Skeleton Plane***
 
@@ -115,7 +176,7 @@ To plan out the scope of the site, I compiled a list of features that were neede
    *  I opened the directory using VS code and started a terminal
    *  I initialized the directory as a Git repository using the command `git init`
    *  I added a README to the file using the command `git add README.md`
-   *  I then created an index.html file in the directory and started working on the site
+   *  I then created an `app.py` file in the directory and started working on the site
    *  When I was ready to commit my first set of changes, I used the `git add .` and the `git commit -m "Initial commit"` commands in my terminal
    
 * In order to store my commits remotely on Github, I linked my local repository to the remote repository:
