@@ -125,7 +125,7 @@ The overview of the database schema and how each collection is related is shown 
 
 #### **Front End Design:** 
 For the front end, I planned to create 10 html pages which extended from one base template.  
-<!-- #### Site Structure -->
+
 `index.html` - landing page for the site with a call to action encouraging viewers to register  
 `register.html` - register form for the user to set up an account   
 `login.html` - login form for the user to login to their account  
@@ -146,7 +146,7 @@ In order to plan out the development stages and ensure that the all user stories
 
 * The site is designed to be **mobile first**. This decision was made in order to ensure it was easily accessible for all potential users.
 * Since it is a full stack application with a large scope, I decided I needed to use the **Boostrap** framework in order to speed up the front end development as much as possible.
-* I decided to focus primarily on **functionality over form**. If it was possible to achieve the user experience using a Bootstrap component with a minimal amount of customization, I would choose this over attempting to design the component from scratch. 
+* I decided to focus primarily on **functionality over form**. If it was possible to achieve the desired user experience using a Bootstrap component with a minimal amount of customization, I would choose this over attempting to design the component from scratch. 
 
 ### **Skeleton Plane**
 For the skeleton plane, wireframes were completed for each page of the website. Shown below:
@@ -163,7 +163,6 @@ For the skeleton plane, wireframes were completed for each page of the website. 
 
 ### **Surface Plane**
 
-<!-- aesthetics -->
 **Color Palette**  
 To create the color scheme of the site, I used the color palette generator [Coolors.](https://coolors.co/) I wanted to focus on using colors which could be associated with going on holidays. A typical activity for a holiday goer is to go to the beach. Therefore I chose a color palette which has shades similar to the color of sand. I also planned to use the Bootstrap standard [button components](https://getbootstrap.com/docs/5.1/components/buttons/) in my site as these had very distinct, eye catching color schemes. Therefore I needed to have a neutral color palette for my site so that these buttons would pop on the screen. The sandy color pallette was neutral enough to achieve this goal.
 
@@ -175,11 +174,25 @@ For the fonts of the site, I used the default Bootstrap font families of **Helve
 
 ### **Features**
 
-#### Existing Features
+#### **Existing Features**
 
-#### Features Left to Implement
-<!-- responsive profile types -->
-<!-- add new categories for admin user priveleges -->
+* **CRUD Functionalities**  
+The user can create a review, read other peoples reviews, update their own reviews and delete their reviews if desired
+* **Charts Section**  
+The user can visit a charts section of the site where they can see the most well reviewed locations on the site
+* **User Profile**  
+The user has their own profile page with user stats and a list of all the reviews they have done
+* **User Avatar**  
+In the user profile page, an randomly generated user avatar is displayed. The avatar is provided via the HTTP avatar library API [DiceBear Avatars.](https://avatars.dicebear.com/) The avatar type is based on the characters of the users username.
+
+
+#### **Features Left to Implement**
+* **Admin User Privelages**  
+Admin users will be able to create different holiday pros and cons that can be selected when writing a review. they will also be able to create custom charts
+* **Profile Page Pagination**  
+Pagination will be included to tidy up the reviews on the users profile page
+* **Profile Globe**  
+Include a visual globe on the profile page which highlight locations reviewed by the user
 
 ### **Technologies Used**
 * [Visual Studio Code](https://code.visualstudio.com/)  
@@ -200,6 +213,8 @@ Used as a web framework for the site
 The database for the site
 * [Heroku](https://id.heroku.com/login)  
 Platform where the site is deployed
+* [DiceBear Avatars](https://avatars.dicebear.com/)  
+An avatar library that provides the site avatars via a HTTP API
 * [Font Awesome](https://fontawesome.com/)  
 Used for icons throughout the site
 * [Git](https://git-scm.com/)  
@@ -215,7 +230,7 @@ Used to create wireframes
 * [dbdiagram](https://dbdiagram.io/home)  
 Used to create the database schema diagram for this readme
 * [Coolors](https://dbdiagram.io/home)  
-
+Used to create the color palette of the site
 ***
 
 ### **Testing**
