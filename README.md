@@ -149,8 +149,17 @@ In order to plan out the development stages and ensure that the all user stories
 * I decided to focus primarily on **functionality over form**. If it was possible to achieve the user experience using a Bootstrap component with a minimal amount of customization, I would choose this over attempting to design the component from scratch. 
 
 ### **Skeleton Plane***
+Wireframes were completed for each pages of the website. Shown below:
 
-<!-- wireframes -->
+* [Landing](documents/wireframes/landing.png)
+* [Login](documents/wireframes/login.png)
+* [Register](documents/wireframes/register.png)
+* [Profile](documents/wireframes/profile.png)
+* [Edit Review](documents/wireframes/edit_review.png)
+* [Write Review](documents/wireframes/write_review.png)
+* [Read Review](documents/wireframes/read_review.png)
+* [Charts](documents/wireframes/charts.png)
+* [Reviews](documents/wireframes/reviews.png)
 
 ### **Surface Plane***
 
