@@ -265,7 +265,6 @@ def extract_all_reviewed_locations(reviews):
         review_location = review['location'].lower()
         if review_location not in locations:
             locations.append(review_location)
-    # print(locations)
     return locations
 
 
