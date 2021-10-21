@@ -3,7 +3,7 @@
 ### **Notable Bugs Occurring During Development**
 During the development phase of the site, I encountered a number of significant bugs while testing the output of my code. They were all mistakes which led to important lessons learned for future projects. These are documented below:
 
-### **SSL Certificate Issues**
+### **SSL Certificate Issue**
 When initially connecting my project to my MongoDB database using **pymongo**, I was encountering an error which stated `[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed`. With the help of Tutor support, I discovered the solution to get around this issue was to add the string **“&ssl=true&ssl_cert_reqs=CERT_NONE”** to the end of my Mongo URI. The reason behind this issue was unfortunately beyond my understanding but I plan to further research it online after this project is completed.
 
  <img src="documents/testing/sig-err-3.png" alt="significant error 1" width="400"/> 
@@ -25,6 +25,26 @@ In order to test the durability of the layout of the review cards on the **profi
 In order to manage this issue, I researched the bootstrap documentation and fopund a class called `text-truncate` which could be used to make the report appear in a more tidy fashion. The final appearance is below:
 
 <img src="documents/testing/sig-err-2-sol.png" alt="significant error 2 solution" width="250"/>
+
+### **User Feedback Bug Fixes**
+In order to fully test the website, I shared it with family and friends in order to get feedback on how the site performed. Below are documented changes that were made that arose from the feedback I was given:
+
+### **Charts Page Sorting**
+Originally the sorting algorithm I used for some of the charts sorted solely on the average star rating or cost rating of the review. However this posed an issue. Countries/locations that had a high average score but a low number of reviews submitted were being displayed above countiries/locations which had the same average score but a higher number of submitted reviews. This is shown in the example below. Even though Japan and Ireland both had an average rating of 4 stars, Ireland had 4 reviews more than Japan. An average rating is more reliable if it is be calculated from a larger amount of data, Therefore Ireland should be displayed above Japan.
+
+<img src="documents/testing/user-feed-fix-1-p.png" alt="cahrts page sorting issue" width="400"/>
+
+In order to fix this issue, I added an extra sorting step in the function which sorted the countries/locations by review quantity and then by average score. This ensures that whenever two countries/locations were tied for average score, the country/location which had a higher number of submitted reviews displayed higher in the list.
+
+### **User Form Validation**
+For registering to the site, a regex pattern is used on the input fields on the **register** page form. This pattern allows only letters and numbers to be used for the username and password of the user. There is also a requirement that a minimum of 5 characters is used and a maximum of 15. If the user does not submit data which follows these requirements, I used bootstrap custom validation to display a message to the user to say the data was not valid. After testing with users, I got feedback that the message is too ambiguous and does not give a clear indication of what is needed to be valid. I adjusted this so that the requirments were clearer. Below can be seen the before and after of this adjustment.
+
+<img src="documents/testing/user-feed-fix-2-p.png" alt="issue with validation" width="250"/>
+<img src="documents/testing/user-feed-fix-2-s.png" alt="fix for issue with validation" width="245"/>
+
+### **Login Function Error**
+When testing the **login** page with users, I discovered that my login function was not correctly managing a situation where a user attempts to login with a username which passes client side validation but does not exist on the database. In order to correct this, I adjusted the code so that after the function initially extracts the username from the data, if the value returned is False (i.e. NoneType) then the function flashes a "Username not found!" message on the page.  
+<img src="documents/testing/user-feed-fix-3-s.png" alt="username not found error" width="245"/>
 
 ### **HTML Validator Results**
 In order to validate the quality of my HTML Code, I passed it through the [W3C HTML Validator](https://validator.w3.org/) for all pages of my site to ensure there were no major issues. As there is Jinja templating code throughout the html pages, source code was taken from the rendered pages and passed into the validator (Rather than passing it a URL). Below are the results:
@@ -254,3 +274,6 @@ This story is satisfied on the **read_review** page of the site. A vibrant orang
 <img src="documents/testing/user-story-validation-so-2.png" alt="affiliate logo visible on read review page" width="400"/>  
 
 ### **Remaining Unfixed Bugs**
+<!-- misspellings -->
+<!-- lowercase usernames -->
+<!-- back button after login -->
