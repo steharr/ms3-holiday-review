@@ -270,7 +270,7 @@ This user story is satisfied in the **charts** section of the site. This page ag
 <img src="documents/testing/user-story-validation-so-1.png" alt="charts section of the site" width="400"/> 
 
 2. *I want to create opportunities to generate revenue by promoting traffic to affiliate links accomodation booking sites*  
-This story is satisfied on the **read_review** page of the site. A vibrant orange affiliate link button is visible below the heading of every review on the site. The button prompts the user towards booking a holiday for the location in the review on the affiliate's website. For the purpose of this assignment, a fake affiliate holiday booking website was created called "HolidayBook". The logo was designed using [canva](https://www.canva.com/)  
+This story is satisfied on the **read_review** page of the site. A vibrant orange affiliate link button is visible below the heading of every review on the site. The button prompts the user towards booking a holiday for the location in the review on the affiliate's website. For the purpose of this assignment, a fake affiliate holiday booking website logo was created called "HolidayBook". The logo was designed using [canva](https://www.canva.com/)  
 <img src="documents/testing/user-story-validation-so-2.png" alt="affiliate logo visible on read review page" width="400"/>  
 
 ### **Remaining Unfixed Bugs**
