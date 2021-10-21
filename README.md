@@ -278,6 +278,24 @@ This website is deployed on [Heroku](https://id.heroku.com/login). The steps tak
 
 ### **Credits**
 
+#### **Code**
+
+* **Site Buttons** - The site buttons were taken from [Bootstrap](https://getbootstrap.com/docs/5.1/components/buttons/)  
+
+* **Form Checkbox Button Group** - The review pros and cons checkbox button group was taken from [Bootstrap](https://getbootstrap.com/docs/5.1/components/button-group/#checkbox-and-radio-button-groups) 
+
+* **Form Validation** - The client side form validation for the **register** and **login** page was taken from [Bootstrap custom validation](https://getbootstrap.com/docs/5.1/forms/validation/)
+
+* **Review Cards** - The review cards on the **profile** page were customized from a [Bootstrap card component](https://getbootstrap.com/docs/5.1/components/card/)
+
+* **Delete Review Modal** - The modal for the defensive programming to delete a review was a customized [Bootstrap modal component](https://getbootstrap.com/docs/5.1/components/modal/)
+
+* **Charts Carousel** - The carousel on the **charts** page was a customized [Bootstrap carousel component](https://getbootstrap.com/docs/5.1/components/carousel/)
+
+* **404 Page Routing** - The 404 page flask routing function was taken from the [Flask Documentation]( https://flask.palletsprojects.com/en/1.1.x/patterns/errorpages/)
+
+* **Sticky Footer** - In order to achieve a sticky footer at the bottom of the site, code was taken from an article on [CSS Tricks](https://css-tricks.com/couple-takes-sticky-footer/)
+
 ### **Acknowledgments**
 
 * My mentor, **Spencer Barriball** who guided me through this project.
