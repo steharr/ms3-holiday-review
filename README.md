@@ -9,9 +9,9 @@ This project was completed for my **Code Institute Milestone 3 Project**. The si
 The **five planes of user experience design** developed by Jesse James Garrett was used as the conceptual framework for the development process of this site
 
 ### **Strategy Plane**
-The process of choosing a destination for your next holiday can sometimes be overwhelming. Holiday review sites such as [Tripadvisor](https://www.tripadvisor.ie/) and [HolidayTruths](https://www.holidaytruths.co.uk/) can have cluttered interfaces which have an abundance of data that the viewer needs to navigate through. Other times when searching for options online, users will come accross websites with curated lists created by travel agent companies. The validity of these lists can sometimes be questionable; Could these list contain locations which are affiliated with the Travel Agent? Could **Location A** be at the top of a list purely because the website owners are trying to sell holidays to a partnered resort at that location?
+The process of choosing a destination for your next holiday can sometimes be overwhelming. Holiday review sites such as [Tripadvisor](https://www.tripadvisor.ie/) and [HolidayTruths](https://www.holidaytruths.co.uk/) can have cluttered interfaces which have an abundance of data that the viewer needs to navigate through. Other times when searching for options online, users will come accross websites with curated lists created by travel agent companies. The validity of these lists can sometimes be questionable; Could these lists contain locations which are affiliated with the Travel Agent? Could **Location A** be at the top of a list purely because the website owners are trying to sell holidays to a partnered resort at that location?
 
-The site owner of HolidayHub is looking to break into this market with a holiday review website with an intuitive interface that provides users with unbiased, data driven travel ideas. The unique selling point of the site is to be a **Charts** page which aggregates user reviews and gives a complete and clear picture of where the best places to go are. Its important for the site owner that the website develops an active userbase who feel like they are connected to a wider community of reviewers.
+The site owner of HolidayHub is looking to break into this market with a holiday review website that has an intuitive interface providing users with unbiased, data driven travel ideas. The unique selling point of the site is a **Charts** page which aggregates user reviews and gives a complete and clear picture of where the best places to go are. Its important for the site owner that the website develops an active userbase who feel like they are connected to a wider community of reviewers.
 
 Typical site viewers for **HolidayHub** are:
 * People who prefer to go to a holiday destinations based off recomendations they have been given from others
@@ -78,7 +78,7 @@ To plan out the scope of the site, I compiled a list of features that were neede
 <!-- planned technologies for use -->
 
 ### **Structure Plane**
-The structure plane was carried out in three steps: **Back End Design**, **Front End Design** & **Front End Relationships** 
+The structure plane was carried out in three steps: **Back End Design**, **Front End Design** & **Front and Back End Relationship** 
 
 #### **Back End Design:**  
 For the back end of the site there are 5 collections:
@@ -115,7 +115,7 @@ The reviews collection stores all information submitted in a review. There are 1
 `rating` - An integer between (1-5) which gives the review rating  
 `comment` - A string which details the town/city being reviewed  
 `cost`- An integer between (1-3) which gives the review cost rating  
-`time_visited` - A string which details the season which the town/city being reviewed was visited e.g. Summer
+`time_visited` - A string which details the season in which the town/city being reviewed was visited e.g. Summer
 `date_reviewed` - A string which details the date that the review was created **(dd mmm yyyy format)**  
 
 ##### **Database Schema Diagram** 
@@ -136,7 +136,7 @@ For the front end, I planned to create 10 html pages which extended from one bas
 `charts.html` - aggregated review data in the form of charts  
 `reviews.html` - a list of reviews per location or country    
  
-#### **Front and Back End Relationships:**
+#### **Front and Back End Relationship:**
 The final planning for the structure plane involved creating a site plan which describes how the collections and the pages were connected and what were the navigation paths that the user could take through the site. This plan is shown below:
 
 <img src="documents/database-design/site-relationships.png" alt="site database schema" width="800"/> 
@@ -188,7 +188,7 @@ In the user profile page, an randomly generated user avatar is displayed. The av
 
 #### **Features Left to Implement**
 * **Admin User Privelages**  
-Admin users will be able to create different holiday pros and cons that can be selected when writing a review. they will also be able to create custom charts
+Admin users will be able to create different holiday pros and cons that can be selected when writing a review. They will also be able to create custom charts
 * **Profile Page Pagination**  
 Pagination will be included to tidy up the reviews on the users profile page
 * **Profile Globe**  

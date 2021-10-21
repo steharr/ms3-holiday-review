@@ -22,7 +22,7 @@ In order to test the durability of the layout of the review cards on the **profi
 
 <img src="documents/testing/sig-err-2.png" alt="significant error 2" width="250"/> 
 
-In order to manage this issue, I researched the bootstrap documentation and fopund a class called `text-truncate` which could be used to make the report appear in a more tidy fashion. The final appearance is below:
+In order to manage this issue, I researched the bootstrap documentation and found a class called `text-truncate` which could be used to make the report appear in a more tidy fashion. The final appearance is below:
 
 <img src="documents/testing/sig-err-2-sol.png" alt="significant error 2 solution" width="250"/>
 
@@ -127,11 +127,11 @@ In order to validate the quality of my CSS Code, I passed it through the [W3C CS
 In order to validate the quality of my JavaScript Code, I passed it through the [Jshint linter](https://jshint.com/). No errors were found. Nine warnings ocurred for missing semicolons in bootstrap code that I used. I corrected these so the warnings do not appear.
 
 ### **Python Validator Results**
-In order to validate the quality of my Python Code in `app.py`, I passed it through a [PEP8 online checker](https://pep8online.com//). [**Initial results**](documents/testing/python-val.png) showed 12 lines with **line too long (> 79 characters)** errors. I wnet through each affected line one by one and made adjustments in order to address these errors. The majority of cases were caused by the return statement for each of my functions. The `render_template` method I was returning as output took in alot of parameters which caused the line to exceed 79 characters. I could easily address these cases by breaking the line into multiple segments.
+In order to validate the quality of my Python Code in `app.py`, I passed it through a [PEP8 online checker](https://pep8online.com//). [**Initial results**](documents/testing/python-val.png) showed 12 lines with **line too long (> 79 characters)** errors. I went through each affected line one by one and made adjustments in order to address these errors. The majority of cases were caused by the return statement for each of my functions. The `render_template` method I was returning as output took in alot of parameters which caused the line to exceed 79 characters. I could easily address these cases by breaking the line into multiple segments.
 
-One case did appear which was slightly more difficult to correct. if was caused by some conditional logic. It is pictured below:
+One case did appear which was slightly more difficult to correct. If was caused by some conditional logic. It is pictured below:
 
-<img src="documents/testing/python-val-e0.png" alt="python validator error 1" width="400"/>  
+<img src="documents/testing/python-val-e0.png" alt="python validator error 1" width="500"/>  
 
 The logic is neccessary for the subsequent calculations and I couldnt break the line into multiple segments. Therefore I chose to change the `review['location'].lower()` condition that was being checked to a variable called `rev_location`.
 
