@@ -274,6 +274,15 @@ This story is satisfied on the **read_review** page of the site. A vibrant orang
 <img src="documents/testing/user-story-validation-so-2.png" alt="affiliate logo visible on read review page" width="400"/>  
 
 ### **Remaining Unfixed Bugs**
-<!-- misspellings -->
-<!-- lowercase usernames -->
-<!-- back button after login -->
+
+**Lowercase Usernames**  
+When I first developed the register functionality in the site, I mistakenly used the python `.lower()` method to store all usernames in the database in lowercase. As a result a user might have registered with the name **"ADmIn"** on the site registration form but in the back end, the username was stored as **"admin"**. As I got deeper into the project, I started to encourage family and friends to test out using the site so that I could collect enough review data in order to improve how well the **charts** page appeared on the site. I had developed a small userbase on the site. Unfortunately only at this point I then realised that all of their usernames were stored in lowercase. In order for me to correct this issue, I could potentially lock some users out from the site. If it was changed so that uppercase characters were enabled, the existing usernames would need to be fixed by clarifying with each user whether or not they used uppercase characters when registering. In order to maintain the integrity of the site, I decided to keep this untouched. Lowercase usernames would be a unique aspect of the site which sets it apart from others.
+
+**Holiday Pros/Cons Button Group Mobile Behaviour**  
+For the holiday pros and cons selection on the review forms of the site, I used a Bootstrap [checkbox button group component.](https://getbootstrap.com/docs/5.1/components/button-group/#checkbox-and-radio-button-groups) When testing this on a mobile phone, I found it had very unpredictable behaviour. In particular when a user wants to uncheck a particular item, the component is not very intuitive. This particular issue did not occur on desktop devices. I believe the issue is caused by the change in the display of the component when being viewed on a smaller screen. Unfortunately I ran out of time to fix this particular issue. The component is still functional however and during user testing this issue was never brought up.
+
+**Redirect Back to Login Page after Logging In**  
+When the user logs in, it is possible for them the press the back button on their browser and get redirected back to the log in page. This log in page should not be reachable once the user has logged in. To fix this issue for a future release, I would implement logic in the back end to redirect the user to their profile page if the session already has a logged in user.
+
+**Misleading Charts**  
+In the **charts** page, the user can view a chart called "Best Locations for Food". Each location has a count of reviews which shows the number of reviews which have food labelled as a pro for that particular location. The user can then select the location to see all reviews for that particular location. They are then redirected to a page where they can see **all** reviews for that particular location. This is slightly misleading because the user might expect to be seeing only reviews with **food** for that location e.g. the review count might show **"Reviews: 1"** (meaning there was one food review) however 5 reviews appear on the **reviews** page, 4 of which didnt include food. This is not neccessarily a major bug but would be good to address in a future update.
